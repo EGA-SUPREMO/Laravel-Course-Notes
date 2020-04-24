@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/role/{roleType?}', 'TestController@index') -> middleware('role');
+
+	/*function ($roleType='peasant')
+{
+	[
+		'middleware' => "role:$roleType",
+		'uses' => 'TestController@index',
+	];
+	return ;
+});*/
