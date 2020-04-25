@@ -36,3 +36,5 @@ Route::get('terminate',[
 ]);
 
 */
+
+Route::get('user/dashboard', 'UserController@showPath') -> middleware('first');
