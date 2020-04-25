@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/role/{roleType?}', 'TestController@index') -> middleware('role');
 
-Route::get('/terminate', 'NormalController@index') -> middleware('terminate');
+//Route::get('/terminate', 'NormalController@index') -> middleware('terminate');
 
 	/*function ($roleType='peasant')
 {
@@ -36,6 +36,7 @@ Route::get('terminate',[
 ]);
 
 */
+Route::controller('/just-a-normal-day', 'NormalController') -> middleware('terminate');
 
 Route::get('user/dashboard', 'UserController@showPath') -> middleware('first');
 
