@@ -15,11 +15,12 @@ class TerminateMiddleware
      */
     public function handle($request, Closure $next)
     {
+        echo "this begin now note this bed grammer";
         return $next($request);
     }
 
     public function terminate($request, $response)
     {
-        
+        echo "<br>terminated you?ehy";
     }
 }

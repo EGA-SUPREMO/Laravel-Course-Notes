@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::get('/role/{roleType?}', 'TestController@index') -> middleware('role');
 
+Route::get('/terminate', 'NormalController@index') -> middleware('terminate');
+
 	/*function ($roleType='peasant')
 {
 	[
@@ -26,4 +28,11 @@ Route::get('/role/{roleType?}', 'TestController@index') -> middleware('role');
 		'uses' => 'TestController@index',
 	];
 	return ;
-});*/
+});
+
+Route::get('terminate',[
+   'middleware' => 'terminate',
+   'uses' => 'ABCController@index',
+]);
+
+*/
