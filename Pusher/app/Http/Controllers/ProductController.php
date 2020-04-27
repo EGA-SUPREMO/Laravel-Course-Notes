@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = \App\product::all();
+        $products = \App\Product::all();
 
         return view('viewproducts', ['allProducts' => $products]);
     }
@@ -43,7 +43,7 @@ class ProductController extends Controller
             'count' => $request->get('count'),
         ]);
 
-        return redirect('/products')
+        return redirect('/products');
     }
 
     /**
