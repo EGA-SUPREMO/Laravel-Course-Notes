@@ -36,7 +36,10 @@ Route::get('terminate',[
 ]);
 
 */
-Route::controller('/just-a-normal-day', 'NormalController') -> middleware('terminate');
+Route::get('/normal', 'NormalController@index');
+
+Route::get('/normal/just-a-normal-day', 'NormalController@show') -> middleware('terminate');
+Route::get('/normal/make-website/{content?}', 'NormalController@makeYourWebsiteWithTheUrl') -> middleware('terminate');
 
 Route::get('user/dashboard', 'UserController@showPath') -> middleware('first');
 
