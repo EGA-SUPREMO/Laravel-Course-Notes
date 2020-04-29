@@ -23,6 +23,12 @@ class UserController extends Controller
 		$url = $request -> url();
 		echo "URL: ".$url;
 
+		$pattern = $request->is('foo/*');
+      	echo 'is Method: '.$pattern;
+		$pattern = $request->is('user/*');
+      	echo 'is Method: '.$pattern;
+      	echo '<br>';
+
 		echo "<br>Method: $request -> method()";
 
 	}
