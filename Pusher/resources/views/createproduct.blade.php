@@ -67,6 +67,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <form method="POST" action="{{ config('app.url') }}/products">
+                    @csrf
                     <h1>Enter your very private details to store securely(of course) in our database named: data_on_sale</h1>
                     <div class="form-input">
                         <label>Name</label> <input type="text" name="name">
