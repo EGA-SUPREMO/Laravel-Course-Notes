@@ -25,6 +25,10 @@ Route::get('/header/{type}', function (string $type)
    		->withcookie('name','Virat Gandhi');;
 });
 
+Route::get('/json', function() {
+   return response()->json(['name' => 'Virat Gandhi', 'state' => 'Gujarat']);
+});
+
 Route::get('/role/cookies/{roleType?}', 'TestController@index') -> middleware('role');
 Route::get('/role/give-cookies', 'TestController@cookie') -> middleware('role');
 
