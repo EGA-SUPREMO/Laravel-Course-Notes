@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/weeb', function () {
+    return view('ohayo');
+});
+
 Route::get('/header/{type}', function (string $type)
 {
 	return response('helo!', 200) -> header('Content-type', $type)
