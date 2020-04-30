@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/header/{type}', function (string $type)
+{
+	return response('helo!', 200) -> header('Content-type', $type)
+   		->header('X-Header-One', 'Header Value')
+   		->header('X-Header-Two', 'Header Value')
+   		->withcookie('name','Virat Gandhi');;
+});
+
 Route::get('/role/cookies/{roleType?}', 'TestController@index') -> middleware('role');
 Route::get('/role/give-cookies', 'TestController@cookie') -> middleware('role');
 
