@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/role/{roleType?}', 'TestController@index') -> middleware('role');
+Route::get('/role/cookies/{roleType?}', 'TestController@index') -> middleware('role');
+Route::get('/role/give-cookies', 'TestController@cookie') -> middleware('role');
 
 //Route::get('/terminate', 'NormalController@index') -> middleware('terminate');
 
