@@ -14,7 +14,7 @@ class TestController extends Controller
     public function index(Request $request, string $roleType)
     {
     	echo "<br> What is $roleType?";
-    	echo "<br> The TestController!";
+    	echo "<br> The TestController!" . $varPublicInEveryView;
 
     	$minutes = 10;
     	$response = new Response("hola");
