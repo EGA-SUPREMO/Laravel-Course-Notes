@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/weeb', ['as' => 'ya-hoo', function () {
     return view('ohayo');
-})];
+}]);
 
 Route::get('/weee', function () {
     return redirect() -> route('ya-hoo');
