@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/weeb', function () {
+Route::get('/weeb', ['as' => 'ya-hoo', function () {
     return view('ohayo');
+})];
+
+Route::get('/weee', function () {
+    return redirect() -> route('ya-hoo');
 });
 
 Route::get('/header/{type}', function (string $type)
@@ -36,6 +40,9 @@ Route::get('/json', function() {
 Route::get('/role/cookies/{roleType?}', 'TestController@index') -> middleware('role');
 Route::get('/role/give-cookies', 'TestController@cookie') -> middleware('role');
 
+Route::get('/role/cuukies', function () {
+    return redirect() -> action('TestController@cookie');
+});
 //Route::get('/terminate', 'NormalController@index') -> middleware('terminate');
 
 	/*function ($roleType='peasant')
