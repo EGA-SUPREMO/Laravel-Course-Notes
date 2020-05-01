@@ -26,6 +26,8 @@ I dropped the TutorialsPoint's course at Working with databases.
 
 ![This should be an image! pls open an issue](https://github.com/EGA-SUPREMO/laravel-notes/blob/master/TutorialsPoint/public/enough%20with%20this.jpg)
 
+WHY?
+
 ------
 
 Now I'll watch [Coder's Tape videos](https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg/videos).
