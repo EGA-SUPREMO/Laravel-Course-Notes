@@ -4,9 +4,10 @@
 
 @section('content')
 	<ul>
-		<li>Service 1</li>
-		<li>Service 5</li>
-		<li>Service 4</li>
-		<li>Service 2</li>
+	@forelse($services as $service)
+		<li>{{ $service }}</li>
+	@empty
+		No services available
+	@endforelse
 	</ul>
 @endsection

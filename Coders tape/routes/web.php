@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::view('/about-us', 'aboutUs');
-Route::view('/services', 'services');
+Route::get('/services', 'ServicesController@index');
