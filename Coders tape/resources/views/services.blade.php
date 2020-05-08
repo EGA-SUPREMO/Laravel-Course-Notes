@@ -5,7 +5,7 @@
 @section('content')
 	<ul>
 	@forelse($services as $service)
-		<li>{{ $service }}</li>
+		<li>{{ $service -> name }}</li>
 	@empty
 		No services available
 	@endforelse

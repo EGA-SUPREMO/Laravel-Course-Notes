@@ -8,12 +8,8 @@ class ServicesController extends Controller
 {
 	public function index()
 	{
-		$services = [
-			'Service 1',
-			'Service 2',
-			'Service 3',
-			'Service 4',
-		];
+		$services = \App\Service::all();
+
 		return view('services', compact('services'));
 	}
 }
