@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/costumers');
 });
 
 Route::view('/about-us', 'aboutUs');
 Route::get('/service', 'ServicesController@index');
 Route::post('/service', 'ServicesController@store');
+
+Route::get('/costumers', 'CostumerController@index');
+Route::get('/costumers/create', 'CostumerController@create');
+Route::post('/costumers', 'CostumerController@store');
