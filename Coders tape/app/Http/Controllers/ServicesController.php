@@ -10,6 +10,6 @@ class ServicesController extends Controller
 	{
 		$services = \App\Service::all();
 
-		return view('services', compact('services'));
+		return view('service.index', compact('services'));
 	}
 }
