@@ -20,5 +20,13 @@ class CostumerController extends Controller
 
 	public function store()
 	{
+		$validatedData = request() -> validate([
+			'name' => 'required|min:5',
+			'email' => 'required|email',
+		]);
+
+		\App\Costumer::create($validatedData);
+
+		return redirect('/costumers');
 	}
 }
