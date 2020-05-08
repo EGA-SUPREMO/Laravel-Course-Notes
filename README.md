@@ -30,10 +30,11 @@ WHY?
 
 ------
 
-Now I'll watch [Coder's Tape videos](https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg/videos).
+## Coder's Tape
+Currently I'm watching the [Coder's Tape videos](https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg/videos).
 
 ## Pusher
 The pusher folder is for the project showed [here](https://blog.pusher.com/laravel-mvc-use/).
 
 ## Note
-This is only for testing or experimenting with Laravel that why the commits messages are barely helpful, check out [Trivrr](https://github.com/EGA-SUPREMO/Trivrr) instead for 'good' commits that I usually write when I doing a project.
+This is only for testing or experimenting with Laravel, that's why the commits messages are barely helpful, check out [Trivrr](https://github.com/EGA-SUPREMO/Trivrr) instead for 'good' commits that I usually write when doing a project.
