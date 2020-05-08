@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::view('/about-us', 'aboutUs');
 Route::get('/service', 'ServicesController@index');
+Route::post('/service', 'ServicesController@store');
