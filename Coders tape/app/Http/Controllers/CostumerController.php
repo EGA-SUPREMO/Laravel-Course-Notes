@@ -39,4 +39,15 @@ class CostumerController extends Controller
 	{//Costumer::findOrFail('costumer'); //In case it doesn't find it show the 404 Page
 		return view('costumer.edit', compact('costumer'));
 	}
+	public function update(Costumer $costumer)
+	{
+		$validatedData = request() -> validate([
+			'name' => 'required|min:5',
+			'email' => 'required|email',
+		]);
+
+		$costumer -> update($validatedData);
+
+		return redirect('/costumers');
+	}
 }

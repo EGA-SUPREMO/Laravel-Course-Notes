@@ -1,6 +1,7 @@
 <h1>Edit a new costumer</h1>
 
 <form action="/costumers/{{ $costumer->id }}" method="POST">
+	@method('PATCH')
 	<div>
 		<label for="name">Name</label>
 		<input type="text" name="name" value="{{ $costumer->name }}" required>
