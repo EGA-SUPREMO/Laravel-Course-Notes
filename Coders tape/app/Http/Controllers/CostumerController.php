@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Costumer;
+use Illuminate\Validation\Rule;
 
 class CostumerController extends Controller
 {
-    public function index()
+	public function index()
 	{
 		$costumers = Costumer::all();
 
@@ -21,12 +23,9 @@ class CostumerController extends Controller
 
 	public function store()
 	{
-		$validatedData = request() -> validate([
-			'name' => 'required|min:5|unique:costumers',
-			'email' => 'required|email|unique:costumers',
-		]);
+		$extraRules = [ Rule::unique('costumers') ];
 
-		Costumer::create($validatedData);
+		Costumer::create($this->validatedData($extraRules));
 
 		return redirect('/costumers');
 	}
@@ -41,13 +40,27 @@ class CostumerController extends Controller
 	}
 	public function update(Costumer $costumer)
 	{
-		$validatedData = request() -> validate([
-			'name' => ['required', 'min:5', 'unique:costumers'],
-			'email' => 'required|email|unique:costumers',
-		]);
-
-		$costumer -> update($validatedData);
+		$extraRules = [ Rule::unique('costumers')->ignore($costumer->id) ];
+		$costumer -> update($this->validatedData($extraRules));
 
 		return redirect('/costumers');
+	}
+	/*
+	 * Validates the data from requests using the specified rules the rules from the parameters.
+	 *
+	 */
+	public function validatedData(array $extraRules)
+	{
+		return request() -> validate([
+			'name' => array_merge([
+				'required',
+				'min:5',
+			], $extraRules),
+			'email' => array_merge([
+				'required',
+				'email',
+				'min:5',
+			], $extraRules)
+		]);
 	}
 }
