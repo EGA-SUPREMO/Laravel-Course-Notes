@@ -32,7 +32,11 @@ class CostumerController extends Controller
 	}
 
 	public function show(Costumer $costumer)
-	{
+	{//Costumer::findOrFail('costumer'); //In case it doesn't find it show the 404 Page
 		return view('costumer.show', compact('costumer'));
+	}
+	public function edit(Costumer $costumer)
+	{//Costumer::findOrFail('costumer'); //In case it doesn't find it show the 404 Page
+		return view('costumer.edit', compact('costumer'));
 	}
 }

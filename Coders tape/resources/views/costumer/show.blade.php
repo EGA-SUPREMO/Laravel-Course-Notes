@@ -6,3 +6,4 @@
 <p>{{ $costumer->name }}</p>
 <strong>Email:</strong>
 <p>{{ $costumer->email }}</p>
+<a href="/costumers/{{ $costumer -> id }}/edit">Edit!</a>

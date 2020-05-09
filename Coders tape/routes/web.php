@@ -25,4 +25,5 @@ Route::get('/costumers', 'CostumerController@index');
 Route::get('/costumers/create', 'CostumerController@create');
 Route::post('/costumers', 'CostumerController@store');
 Route::get('/costumers/{costumer}', 'CostumerController@show');
-Route::patch('/costumers/{costumer}/edit', 'CostumerController@show');
+Route::get('/costumers/{costumer}/edit', 'CostumerController@edit');
+//Route::patch('/costumers/{costumer}', 'CostumerController@update');
