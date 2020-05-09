@@ -45,6 +45,12 @@ class CostumerController extends Controller
 
 		return redirect('/costumers');
 	}
+	public function destroy(Costumer $costumer)
+	{
+		$costumer->delete($costumer);
+		
+		return redirect('/costumers');
+	}
 	/*
 	 * Validates the data from requests using the specified rules the rules from the parameters.
 	 *

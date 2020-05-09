@@ -27,3 +27,4 @@ Route::post('/costumers', 'CostumerController@store');
 Route::get('/costumers/{costumer}', 'CostumerController@show');
 Route::get('/costumers/{costumer}/edit', 'CostumerController@edit');
 Route::patch('/costumers/{costumer}', 'CostumerController@update');
+Route::delete('/costumers/{costumer}', 'CostumerController@destroy');
