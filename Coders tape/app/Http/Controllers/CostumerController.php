@@ -9,9 +9,10 @@ use Illuminate\Validation\Rule;
 
 class CostumerController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$costumers = Costumer::where('active', 1) -> get();//first(); for one element
+		$activeQuery = $request->query('active', 1);
+		$costumers = Costumer::where('active', $activeQuery) -> get();//first(); for one element
 		// get() returns a fancy array
 
 		return view('costumer.index', compact('costumers'));
