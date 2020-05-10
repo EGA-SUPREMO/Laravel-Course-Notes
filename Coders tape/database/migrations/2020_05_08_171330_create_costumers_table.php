@@ -16,7 +16,7 @@ class CreateCostumersTable extends Migration
         Schema::create('costumers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->usignedInteger('active')->default(1);
+            $table->unsignedInteger('active')->default(1);
             $table->string('email');
             $table->timestamps();
         });

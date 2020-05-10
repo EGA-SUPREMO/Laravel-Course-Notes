@@ -11,7 +11,8 @@ class CostumerController extends Controller
 {
 	public function index()
 	{
-		$costumers = Costumer::all();
+		$costumers = Costumer::where('active', 1) -> get();//first(); for one element
+		// get() returns a fancy array
 
 		return view('costumer.index', compact('costumers'));
 	}
