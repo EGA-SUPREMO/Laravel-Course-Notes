@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\WelcomeMail;
+use App\Costumer;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,5 @@ Route::delete('/costumers/{costumer}', 'CostumerController@destroy');
 
 Route::get('/email', function()
 {
-	return new WelcomeMail();
+	return new WelcomeMail(new Costumer());
 });

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Costumer;
+use App\Mail\WelcomeMail;
+
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Mail;
 
 class CostumerController extends Controller
 {
@@ -29,7 +31,9 @@ class CostumerController extends Controller
 	{
 		$extraRules = [ Rule::unique('costumers') ];
 
-		Costumer::create($this->validatedData($extraRules));
+		$costumer = Costumer::create($this->validatedData($extraRules));
+
+		Mail::to($costumer->email)->send(new WelcomeMail($costumer));
 
 		return redirect('/costumers');
 	}
