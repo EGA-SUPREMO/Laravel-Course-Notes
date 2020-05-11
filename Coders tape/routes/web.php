@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\WelcomeMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,8 @@ Route::get('/costumers/{costumer}', 'CostumerController@show');
 Route::get('/costumers/{costumer}/edit', 'CostumerController@edit');
 Route::patch('/costumers/{costumer}', 'CostumerController@update');
 Route::delete('/costumers/{costumer}', 'CostumerController@destroy');
+
+Route::get('/email', function()
+{
+	return new WelcomeMail();
+});
