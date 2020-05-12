@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\Questionnaire;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -22,9 +23,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Questionnaire $questionnaire)
     {
-        //
+        return view('question.create', compact('questionnaire'));
     }
 
     /**
