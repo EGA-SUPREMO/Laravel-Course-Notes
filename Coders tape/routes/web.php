@@ -35,3 +35,6 @@ Route::get('/email', function()
 {
 	return new WelcomeMail(new Costumer());
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
