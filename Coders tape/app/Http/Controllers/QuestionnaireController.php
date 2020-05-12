@@ -40,8 +40,7 @@ class QuestionnaireController extends Controller
             'purpose' => 'required',
         ]);
 
-        $validatedData['user_id'] = auth() -> user() -> id;
-        $questionnaire = Questionnaire::create($validatedData);
+        $questionnaire = auth() -> user() -> questionnaires() -> create($validatedData);
 
         return redirect('questionnaires/'.$questionnaire -> id);
     }
