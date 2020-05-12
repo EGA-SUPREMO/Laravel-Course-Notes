@@ -12,7 +12,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="question">Question</label>
-                            <input type="text" class="form-control" id="question" name="question[question]" aria-describedby="questionHelp" placeholder="Enter the question">
+                            <input type="text" class="form-control" id="question" name="question[question]" aria-describedby="questionHelp" placeholder="Enter the question" value="{{ old('question.question') }}">
                             <small id="questionHelp" class="form-text text-muted">Ask the question in a clear everybody would understand.</small>
                             
                             @error('question.question')
@@ -27,7 +27,7 @@
                                 @for($i = 0; $i < 4; $i++)
                                     <div class="form-group">
                                         <label for="answer{{ $i }}">Choice {{ $i + 1 }}</label>
-                                        <input type="text" class="form-control" id="answer{{ $i }}" name="answers[][answer]" aria-describedby="choiceHelp" placeholder="Enter the question">
+                                        <input type="text" class="form-control" id="answer{{ $i }}" name="answers[][answer]" aria-describedby="choiceHelp" placeholder="Enter the question" value='{{ old("answers.$i.answer") }}'>
                                         
                                         @error('answers.'. $i . '.answer')
                                             <small class="text-danger">{{ $message }}</small>
