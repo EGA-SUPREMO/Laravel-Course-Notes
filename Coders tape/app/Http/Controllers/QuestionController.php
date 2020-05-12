@@ -34,9 +34,17 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Questionnaire $questionnaire)
     {
-        //
+        $validatedData = request() -> validate([
+            'question.question' => 'required',
+            'answers.*.answer' => 'required',
+        ]);
+
+        $question = $questionnaire->questions()->create($validatedData['question']);
+        $question -> answers()->createMany($validatedData['answers']);
+
+        return redirect('questionnaires/' . $questionnaire -> id);
     }
 
     /**
