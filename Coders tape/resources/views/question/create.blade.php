@@ -27,7 +27,7 @@
                                 @for($i = 0; $i < 4; $i++)
                                     <div class="form-group">
                                         <label for="answer{{ $i }}">Choice {{ $i + 1 }}</label>
-                                        <input type="text" class="form-control" id="answer{{ $i }}" name="answers[][]" aria-describedby="choiceHelp" placeholder="Enter the question">
+                                        <input type="text" class="form-control" id="answer{{ $i }}" name="answers[][answer]" aria-describedby="choiceHelp" placeholder="Enter the question">
                                         
                                         @error('answers.'. $i . 'answer')
                                             <small class="text-danger">{{ $message }}</small>
