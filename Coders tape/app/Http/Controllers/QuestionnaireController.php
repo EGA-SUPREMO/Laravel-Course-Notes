@@ -14,7 +14,7 @@ class QuestionnaireController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +24,7 @@ class QuestionnaireController extends Controller
      */
     public function create()
     {
-        //
+        return view('questionnaire.create');
     }
 
     /**
