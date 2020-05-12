@@ -35,7 +35,13 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = request() -> validate([
+            'title' => 'required',
+            'purpose' => 'required',
+        ]);
+
+        //Questionnaire::
+
     }
 
     /**
