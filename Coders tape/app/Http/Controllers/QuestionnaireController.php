@@ -41,9 +41,9 @@ class QuestionnaireController extends Controller
         ]);
         $validatedData['user_id'] = auth() -> user() -> id;
 
-        $questionnaire = Questionnaire::create($date);
+        $questionnaire = Questionnaire::create($validatedData);
 
-        return redirect('questionnaire/'.$questionnaire -> id;)
+        return redirect('questionnaire/'.$questionnaire -> id);
     }
 
     /**
@@ -54,7 +54,7 @@ class QuestionnaireController extends Controller
      */
     public function show(Questionnaire $questionnaire)
     {
-        //
+        return view('questionnaire.show', compact('questionnaire'));
     }
 
     /**
