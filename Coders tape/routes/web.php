@@ -39,4 +39,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/questionnaires', 'QuestionnaireController');
-Route::resource('/questionnaires/{questionnaire}/question', 'QuestionController');
+Route::resource('/questionnaires/{questionnaire}/questions', 'QuestionController');
