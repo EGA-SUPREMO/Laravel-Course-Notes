@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <a href="{{ $questionnaire -> id }}/questions/create" class="btn btn-dark">Create a new question</a>
+                    <a href="/survey/{{ $questionnaire -> id }}-{{ Str::slug($questionnaire -> title) }}" class="btn btn-dark">Take Survey</a>
                 </div>
             </div>
             @foreach($questionnaire -> questions as $question)
