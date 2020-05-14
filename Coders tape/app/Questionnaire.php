@@ -3,10 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Questionnaire extends Model
 {
     protected $guarded = [];
+
+    public function path()
+    {
+        return '/questionnaires/' . $this->id;
+    }
+    public function publicPath()
+    {
+        return '/survey/'. $this -> id . '-' . Str::slug($this -> title);
+    }
 
     public function user()
     {

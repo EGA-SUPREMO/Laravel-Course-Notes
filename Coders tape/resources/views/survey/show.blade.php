@@ -7,7 +7,7 @@
 
             <h1>{{ $questionnaire -> title }}</h1>
 
-            <form action="/survey/{{ $questionnaire -> id }}-{{ Str::slug($questionnaire -> title) }}" method="POST">
+            <form action="{{ $questionnaire -> publicPath() }}" method="POST">
                 @csrf
 
                 @foreach($questionnaire -> questions as $key => $question)
