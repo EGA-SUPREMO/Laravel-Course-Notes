@@ -23,9 +23,9 @@
                                 @foreach($question -> answers as $answer)
                                     <label for="answer{{ $answer -> id }}">
                                         <li class="list-group-item">
-                                            <input type="radio" class="mr-2" name="responses[{{ $key }}][answer_id]" value="{{ $answer -> id }}" id="answer{{ $answer -> id }}" {{ (old('responses.' . $key . '.answer_id')) ? 'checked' : '' }}>
+                                            <input type="radio" class="mr-2" name="responses[{{ $key }}][answer_id]" value="{{ $answer -> id }}" id="answer{{ $answer -> id }}" {{ (old('responses.' . $key . '.answer_id') == $answer -> id) ? 'checked' : '' }}>
                                             {{ $answer -> answer }}
-
+                                            
                                             <input type="hidden" name="responses[{{ $key }}][question_id]" value="{{ $answer -> id }}">
                                         </li>
                                     </label>
@@ -34,26 +34,26 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="card">
+                <div class="card mt-4">
                     <div class="card-header">Your information</div>
 
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" aria-describedby="titleHelp" placeholder="Enter the name">
-                            <small id="titleHelp" class="form-text text-muted">Your name.</small>
+                            <input type="text" class="form-control" id="name" name="survey[name]" aria-describedby="nameHelp" placeholder="Enter the name" value="{{ old('survey.name') }}">
+                            <small id="nameHelp" class="form-text text-muted">Your name.</small>
                             
-                            @error('name')
+                            @error('survey.name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter the porpuse">
+                            <input type="email" class="form-control" id="email" name="survey[email]" aria-describedby="emailHelp" placeholder="Enter your email" value="{{ old('survey.email') }}">
                             <small id="emailHelp" class="form-text text-muted">Your email, so we can contact you!</small>
 
-                            @error('email')
+                            @error('survey.email')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                             </div>

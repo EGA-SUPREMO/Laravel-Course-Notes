@@ -15,13 +15,13 @@ class CreateSurveysTable extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
-            $table->string('questionnaire_id');
-            $table->string('question_id');
-            $table->string('answer_id');
+            $table->string('name');
+            $table->string('email');
+            $table->unsignedBigInteger('questionnaire_id');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
