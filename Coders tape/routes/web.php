@@ -42,3 +42,4 @@ Route::resource('/questionnaires', 'QuestionnaireController');
 Route::resource('/questionnaires/{questionnaire}/questions', 'QuestionController');
 
 Route::get('/survey/{questionnaire}-{slug}', 'SurveyController@show');//Purposefully not following the RESTful controllers cuz I want to document the slug usage
+Route::post('/survey/{questionnaire}-{slug}', 'SurveyController@store');

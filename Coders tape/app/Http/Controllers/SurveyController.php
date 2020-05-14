@@ -13,4 +13,14 @@ class SurveyController extends Controller
 
     	return view('survey.show', compact('questionnaire'));
     }
+
+    public function store(Questionnaire $questionnaire)
+    {
+    	$validatedData = request() -> validate([
+    		'responses.*.question_id' => 'required',
+    		'responses.*.answer_id' => 'required',
+    	]);
+
+    	$survey = $questionnaire -> surveys() -> create();
+    }
 }

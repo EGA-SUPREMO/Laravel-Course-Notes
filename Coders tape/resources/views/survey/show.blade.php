@@ -35,25 +35,25 @@
                     </div>
                 @endforeach
                 <div class="card">
-                    <div class="card-header">Create Questionnaire</div>
+                    <div class="card-header">Your information</div>
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" placeholder="Enter the title">
-                            <small id="titleHelp" class="form-text text-muted">Give a good title that describes the questionnaire.</small>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="titleHelp" placeholder="Enter the name">
+                            <small id="titleHelp" class="form-text text-muted">Your name.</small>
                             
-                            @error('title')
+                            @error('name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label for="purpose">Purpose</label>
-                            <input type="text" class="form-control" id="purpose" name="purpose" aria-describedby="purposeHelp" placeholder="Enter the porpuse">
-                            <small id="purposeHelp" class="form-text text-muted">A good purpose will draw more attention!</small>
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter the porpuse">
+                            <small id="emailHelp" class="form-text text-muted">Your email, so we can contact you!</small>
 
-                            @error('purpose')
+                            @error('email')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                             </div>
