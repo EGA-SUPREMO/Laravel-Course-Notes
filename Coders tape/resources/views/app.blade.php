@@ -7,7 +7,7 @@
         <title>@yield('title') - Larravel is da best!!1</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:wght@400;700,200,600" rel="stylesheet">
 
         <!-- Styles -->
         <style>
