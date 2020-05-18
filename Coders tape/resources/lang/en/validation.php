@@ -146,6 +146,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'question.question' => 'question',
+        'answers.*.answer' => 'answer',
+        'surveyResponses.*.answer_id' => 'answer',
+        'survey.name' => 'name',
+        'survey.email' => 'email',
+    ],
 
 ];
