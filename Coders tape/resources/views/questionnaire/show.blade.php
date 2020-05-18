@@ -24,7 +24,9 @@
 
                                     <div>
                                         @if($answer -> surveyResponses -> count())
-                                            {{ intval(($answer -> surveyResponses -> count()) * 100 / $question -> surveyResponses -> count()) }}
+                                            {{ intval(($answer -> surveyResponses -> count()) / $question -> surveyResponses -> count() * 100) . ' %'}}
+                                        @else
+                                            {{0 . ' %'}}
                                         @endif
                                     </div>
                                 </li>
