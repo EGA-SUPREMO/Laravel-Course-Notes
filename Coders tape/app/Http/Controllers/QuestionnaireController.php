@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Questionnaire;
-use App\Question;
-use App\SurveyResponse;
 use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
