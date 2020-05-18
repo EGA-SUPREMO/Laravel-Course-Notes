@@ -17,14 +17,14 @@ class SurveyController extends Controller
     public function store(Questionnaire $questionnaire)
     {
     	$validatedData = request() -> validate([
-    		'responses.*.question_id' => 'required',
-    		'responses.*.answer_id' => 'required',
+    		'surveyResponses.*.question_id' => 'required',
+    		'surveyResponses.*.answer_id' => 'required',
     		'survey.name' => 'required',
     		'survey.email' => 'required|email',
     	]);
 
     	$survey = $questionnaire -> surveys() -> create($validatedData['survey']);
-    	$survey -> responses() -> createMany($validatedData['responses']);
+    	$survey -> responses() -> createMany($validatedData['surveyResponses']);
 
     	return 'ty';
     }

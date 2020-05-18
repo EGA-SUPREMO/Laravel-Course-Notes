@@ -22,9 +22,9 @@
                                 <li class="list-group-item d-flex justify-content-between">
                                     <div>{{ $answer -> answer }}</div>
 
-                                    <div>{{dd($question -> responses -> count())}}
-                                        @if($answer -> responses -> count())
-                                            {{ intval(($answer -> responses -> count()) * 100 / ($question -> responses -> count())) }}
+                                    <div>
+                                        @if($answer -> surveyResponses -> count())
+                                            {{ intval(($answer -> surveyResponses -> count()) * 100 / $question -> surveyResponses -> count()) }}
                                         @endif
                                     </div>
                                 </li>

@@ -15,7 +15,7 @@
                         <div class="card-header"><strong>{{ $key + 1 }}. </strong>{{ $question -> question }}</div>
 
                         <div class="card-body">
-                            @error('responses.' . $key . '.answer_id')
+                            @error('surveyResponses.' . $key . '.answer_id')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
 
@@ -23,10 +23,10 @@
                                 @foreach($question -> answers as $answer)
                                     <label for="answer{{ $answer -> id }}">
                                         <li class="list-group-item">
-                                            <input type="radio" class="mr-2" name="responses[{{ $key }}][answer_id]" value="{{ $answer -> id }}" id="answer{{ $answer -> id }}" {{ (old('responses.' . $key . '.answer_id') == $answer -> id) ? 'checked' : '' }}>
+                                            <input type="radio" class="mr-2" name="surveyResponses[{{ $key }}][answer_id]" value="{{ $answer -> id }}" id="answer{{ $answer -> id }}" {{ (old('surveyResponses.' . $key . '.answer_id') == $answer -> id) ? 'checked' : '' }}>
                                             {{ $answer -> answer }}
                                             
-                                            <input type="hidden" name="responses[{{ $key }}][question_id]" value="{{ $answer -> id }}">
+                                            <input type="hidden" name="surveyResponses[{{ $key }}][question_id]" value="{{ $question -> id }}">
                                         </li>
                                     </label>
                                 @endforeach

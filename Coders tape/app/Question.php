@@ -18,7 +18,7 @@ class Question extends Model
 		return $this -> hasMany(Answer::class);
 	}
 
-	public function responses()
+	public function surveyResponses()
 	{
 		return $this -> hasMany(SurveyResponse::class);
 	}
