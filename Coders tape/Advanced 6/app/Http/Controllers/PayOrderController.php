@@ -9,10 +9,8 @@ use Illuminate\Http\Request;
 
 class PayOrderController extends Controller
 {
-	public function store(): void
+	public function store(PaymentGateway $paymentGateway): void
 	{
-		$paymentGateway = new PaymentGateway();
-
 		dd($paymentGateway -> charge(2500));
 	}
 }
