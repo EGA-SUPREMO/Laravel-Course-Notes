@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 /**
  * 
  */
-class PaymentGateway
+class BankPaymentGateway
 {
 	private string $currency;
 	private int $discount;
