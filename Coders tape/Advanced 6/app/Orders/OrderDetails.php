@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Orders;
 
-use App\Billing\BankPaymentGateway;
+use App\Billing\PaymentGatewayContract;
 /**
  * 
  */
@@ -11,7 +11,7 @@ class OrderDetails {
 
 	private $paymentGateway;
 
-	function __construct(BankPaymentGateway $paymentGateway)
+	function __construct(PaymentGatewayContract $paymentGateway)
 	{
 		$this->paymentGateway = $paymentGateway;
 	}
