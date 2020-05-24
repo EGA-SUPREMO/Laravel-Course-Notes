@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 /**
  * 
  */
-class BankPaymentGateway
+class BankPaymentGateway implements PaymentGatewayContract
 {
 	private string $currency;
 	private int $discount;
@@ -18,12 +18,12 @@ class BankPaymentGateway
 		$this -> discount = 0;
 	}
 
-	public function setDiscount($amount)
+	public function setDiscount(int $amount): void
 	{
 		$this -> discount = $amount;
 	}
 	
-	function charge(int $amount): array
+	public function charge(int $amount): array
 	{
 		$details = [
 			'amount' => $amount - $this -> discount,
