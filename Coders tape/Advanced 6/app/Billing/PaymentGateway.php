@@ -10,10 +10,17 @@ use Illuminate\Support\Str;
 class PaymentGateway
 {
 	private string $currency;
+	private int $discount;
 
 	public function __construct($currency)
 	{
 		$this -> currency = $currency;
+		$this -> discount = 0;
+	}
+
+	public function setDiscount($amount)
+	{
+		$this -> discount = $amount;
 	}
 	
 	function charge(int $amount): array
@@ -22,6 +29,7 @@ class PaymentGateway
 			'amount' => $amount,
 			'confirmation_number' => Str::random(),
 			'currency' => $this -> currency,
+			'discount' => $this -> discount,
 		];
 
 		return $details;
