@@ -26,7 +26,7 @@ class PaymentGateway
 	function charge(int $amount): array
 	{
 		$details = [
-			'amount' => $amount,
+			'amount' => $amount - $this -> discount,
 			'confirmation_number' => Str::random(),
 			'currency' => $this -> currency,
 			'discount' => $this -> discount,

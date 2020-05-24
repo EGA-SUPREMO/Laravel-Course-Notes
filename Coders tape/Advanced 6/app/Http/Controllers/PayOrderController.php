@@ -13,7 +13,6 @@ class PayOrderController extends Controller
 	public function store(OrderDetails $orderDetails, PaymentGateway $paymentGateway): void
 	{
 		$order = $orderDetails-> all();
- 		dd($order);
 		dd($paymentGateway -> charge(2500));
 	}
 }
