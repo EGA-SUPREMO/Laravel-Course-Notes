@@ -13,6 +13,5 @@ jobs:
                 with:
                     php-version: 7.4
                     tools: php-cs-fixer
-                    coverage: none # disable xdebug, pcov
-            -   run: "Coders tape/Advanced 6/composer" install --no-progress
+            -   run: 'Coders tape/Advanced 6/composer' install --no-progress
             -   run: "Coders tape/Advanced 6/composer" check-cs
