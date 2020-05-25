@@ -15,7 +15,9 @@ class CreateQuestionnairesTable extends Migration
     {
         Schema::create('questionnaires', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')
+                -> constrained()
+                -> onDelete('cascade');
             $table->string('title');
             $table->string('purpose');
             $table->timestamps();
@@ -29,6 +31,9 @@ class CreateQuestionnairesTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function(Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('questionnaires');
     }
 }

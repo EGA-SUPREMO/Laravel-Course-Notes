@@ -15,9 +15,15 @@ class CreateSurveyResponsesTable extends Migration
     {
         Schema::create('survey_responses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('survey_id');
-            $table->unsignedBigInteger('question_id');
-            $table->unsignedBigInteger('answer_id');
+            $table->foreingId('survey_id')
+                -> constrained()
+                -> onDelete('cascade');
+            $table->foreingId('question_id')
+                -> constrained()
+                -> onDelete('cascade');
+            $table->foreingId('answer_id')
+                -> constrained()
+                -> onDelete('cascade');
             $table->timestamps();
         });
     }

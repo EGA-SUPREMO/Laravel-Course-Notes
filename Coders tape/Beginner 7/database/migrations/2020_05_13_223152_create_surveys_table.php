@@ -17,7 +17,9 @@ class CreateSurveysTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->unsignedBigInteger('questionnaire_id');
+            $table->foreignId('questionnaire_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
