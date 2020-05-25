@@ -13,5 +13,6 @@ jobs:
                 with:
                     php-version: 7.4
                     tools: php-cs-fixer
-            -   run: 'Coders tape/Advanced 6/composer' install --no-progress
-            -   run: "Coders tape/Advanced 6/composer" check-cs
+            -   run: cd "Coders tape/Advanced 6/"
+            -   run: composer install --no-progress
+            -   run: Coders tape/Advanced 6/composer check-cs
