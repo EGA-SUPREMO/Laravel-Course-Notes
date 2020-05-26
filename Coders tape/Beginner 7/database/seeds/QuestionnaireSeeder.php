@@ -1,5 +1,9 @@
 <?php
 
+use App\Questionnaire;
+use App\Question;
+use App\Answer;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -12,10 +16,13 @@ class QuestionnaireSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('questionnaires')->insert([
-    		'user_id' => 1,
-    		'title' => Str::random(10),
-    		'purpose' => Str::random(10),
-    	]);
+        factory(Questionnaire::class) -> create() -> each(function($questionnaire) {
+            $questionnaire->questions() -> saveMany(factory(Question::class, 3) -> make()) -> each(function($question){
+                $question->answers() -> saveMany(factory(Answer::class, 4)->make());
+            });
+        });
+/*        factory(Questionnaire::class, 10) -> create() -> each(function($questionnaire) {
+            $questionnaire -> questions() -> saveMany(factory(Question::class)) -> create();
+        });*/
     }
 }
