@@ -15,13 +15,13 @@ class CreateSurveyResponsesTable extends Migration
     {
         Schema::create('survey_responses', function (Blueprint $table) {
             $table->id();
-            $table->foreingId('survey_id')
+            $table->foreignId('survey_id')
                 -> constrained()
                 -> onDelete('cascade');
-            $table->foreingId('question_id')
+            $table->foreignId('question_id')
                 -> constrained()
                 -> onDelete('cascade');
-            $table->foreingId('answer_id')
+            $table->foreignId('answer_id')
                 -> constrained()
                 -> onDelete('cascade');
             $table->timestamps();
