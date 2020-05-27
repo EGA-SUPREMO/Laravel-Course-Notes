@@ -16,13 +16,16 @@ class QuestionnaireSeeder extends Seeder
      */
     public function run()
     {
-        factory(Questionnaire::class) -> create() -> each(function($questionnaire) {
+/*        factory(Questionnaire::class, 2) -> create() -> each(function($questionnaire) {
             $questionnaire->questions() -> saveMany(factory(Question::class, 3) -> make()) -> each(function($question){
                 $question->answers() -> saveMany(factory(Answer::class, 4)->make());
             });
+        });*/
+        factory(Questionnaire::class, 2) -> create() -> each(function($questionnaire) {
+            $questionnaire -> questions() -> save(factory(Question::class) -> make());
         });
-/*        factory(Questionnaire::class, 10) -> create() -> each(function($questionnaire) {
-            $questionnaire -> questions() -> saveMany(factory(Question::class)) -> create();
+/*        factory(Questionnaire::class, 2) -> create() -> each(function($questionnaire) {
+            $questionnaire -> questions() -> save(factory(Question::class) -> make());
         });*/
     }
 }
