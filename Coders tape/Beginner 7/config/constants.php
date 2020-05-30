@@ -1,0 +1,7 @@
+<?php
+
+return [
+	'QUESTION_SEEDER_AMOUNT' => 3,
+	'ANSWER_SEEDER_AMOUNT' => 4,
+	'QUESTIONNAIRE_SEEDER_AMOUNT' => 2,
+];
