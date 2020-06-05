@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/pay', 'PayOrderController@store');
 Route::get('/payment-types', 'PaymentTypeController@index');
+Route::get('/orders/create', 'OrderController@create');
