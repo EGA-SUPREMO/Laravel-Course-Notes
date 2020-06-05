@@ -34,6 +34,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('paymentTypes', PaymentType::orderBy('name') -> get());
+        /* Option 1, one for everyone
+        View::share('paymentTypes', PaymentType::orderBy('name') -> get());*/
+        /* Option 2, granular shit*/
+        View::composer(['order.create', 'paymentType.index'], function($view)
+        {
+            $view -> with('paymentTypes', PaymentType::orderBy('name', 'desc') -> get());
+        });
     }
 }
