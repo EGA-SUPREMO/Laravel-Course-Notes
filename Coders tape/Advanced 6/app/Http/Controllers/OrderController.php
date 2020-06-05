@@ -10,8 +10,6 @@ class OrderController extends Controller
 {
 	public function create()
 	{
-		$paymentTypes = PaymentType::all();
-
-		return view('order.create', compact('paymentTypes'));
+		return view('order.create');
 	}
 }

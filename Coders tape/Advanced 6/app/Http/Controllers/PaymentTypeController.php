@@ -10,8 +10,6 @@ class PaymentTypeController extends Controller
 {
 	public function index()
 	{
-		$paymentTypes = PaymentType::all();
-
-		return view('paymentType.index', compact('paymentTypes'));
+		return view('paymentType.index');
 	}
 }
