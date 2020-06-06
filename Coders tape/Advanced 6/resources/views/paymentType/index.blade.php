@@ -83,11 +83,7 @@
                 <div class="title m-b-md">
                     Available Payment Types
                 </div>
-                <ul>
-                @foreach($paymentTypes as $paymentType)
-                    <li>{{ $paymentType->name }}</li>
-                @endforeach
-                </ul>
+                @include('partials.paymentTypes.list')
             </div>
         </div>
     </body>
