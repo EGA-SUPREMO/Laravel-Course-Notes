@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 class SurveySeeder extends Seeder
 {
+    private $lastQuestionId;
     /**
      * Run the database seeds.
      *
@@ -15,17 +16,18 @@ class SurveySeeder extends Seeder
     public function run()
     {
     	factory(Survey::class, 10) -> create(['questionnaire_id' => 1]) -> each(function ($survey) {
-    		$randomQuestionId =  
             factory(SurveyResponse::class, 3) -> create([
             	'survey_id' => $survey -> id,
-            	'question_id' => randValue('QUESTION'),
-            	'answer_id' => randValue('ANSWER'),
+            	'question_id' => $this -> randValue('QUESTION'),
+            	'answer_id' => $this -> randValue('ANSWER', $this -> lastQuestionId),
             ]);
         });
     }
 
-    private function randValue($constantName, $offset = 0): int
+    private function randValue(string $constantName, int $offset = 0): int
     {
-    	return rand(1, config("constants.$constantName_SEEDER_AMOUNT") . $offset*config("constants.$constantName_SEEDER_AMOUNT");
+        $this -> lastQuestionId = rand(1, config("constants.$constantName"."_SEEDER_AMOUNT")) + $offset*config("constants.ANSWER_SEEDER_AMOUNT");
+        
+    	return $this -> lastQuestionId;
     }
 }
