@@ -31,7 +31,7 @@ WHY?
 ------
 
 ## Coder's Tape
-The Coder's Tape folder contains two more folders, the 'Beginner 7' for the beginner course of Laravel 6 and the 'Advanced 6' for the advance one plus the 'New in Laravel 7', [I totally recommend its videos](https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg/videos).
+The Coder's Tape folder contains two more folders, the 'Beginner 7' for the beginner course of Laravel 6 and the 'Advanced 6' for the advance one plus the 'New in Laravel 7', [I recommend the Coder's Tape videos](https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg/videos).
 
 ## Pusher
 The pusher folder is for the project showed [here](https://blog.pusher.com/laravel-mvc-use/).
