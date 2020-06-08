@@ -9,7 +9,7 @@
         </div>
         <form>
             <strong>QUICK CHOOSE ONE!!!!!!!!!!!!!!!!!!!!!!!!!!</strong>
-            <x-partials.paymentType.dropdown field="you" />
+            <x-partials.payment-type.dropdown field="you" />
         </form>
     </div>
 @endsection

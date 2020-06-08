@@ -7,6 +7,6 @@
         <div class="title m-b-md">
             Available Payment Types
         </div>
-        <x-partials.paymentType.list />
+        <x-partials.payment-type.list />
     </div>
 @endsection
