@@ -43,6 +43,6 @@ class AppServiceProvider extends ServiceProvider
             $view -> with('paymentTypes', PaymentType::orderBy('name', 'desc') -> get());
         });*/
         // Option 3, classic, real deal here
-        View::composer('partials.paymentTypes.*', PaymentTypeComposer::class);
+        View::composer('components.partials.paymentType.*', PaymentTypeComposer::class);
     }
 }

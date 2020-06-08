@@ -83,7 +83,7 @@
                 <div class="title m-b-md">
                     Available Payment Types
                 </div>
-                @include('partials.paymentTypes.list')
+                <e-partials.paymentType.list />
             </div>
         </div>
     </body>
