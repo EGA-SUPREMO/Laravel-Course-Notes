@@ -83,7 +83,7 @@
                 <div class="title m-b-md">
                     Available Payment Types
                 </div>
-                <e-partials.paymentType.list />
+                <x-partials.paymentType.list />
             </div>
         </div>
     </body>

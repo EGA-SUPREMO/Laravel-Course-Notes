@@ -85,7 +85,7 @@
                 </div>
                 <form>
                     <strong>QUICK CHOOSE ONE!!!!!!!!!!!!!!!!!!!!!!!!!!</strong>
-                    <e-partials.paymentType.dropdown field="you" />
+                    <x-partials.paymentType.dropdown field="you" />
                 </form>
             </div>
         </div>
