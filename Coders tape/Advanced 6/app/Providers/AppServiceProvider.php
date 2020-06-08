@@ -7,7 +7,7 @@ use App\Billing\CreditPaymentGateway;
 use App\Billing\PaymentGatewayContract;
 
 use App\PaymentType;
-use App\Http\View\Composers\PaymentTypeComposer;
+use App\View\Composers\PaymentTypeComposer;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
