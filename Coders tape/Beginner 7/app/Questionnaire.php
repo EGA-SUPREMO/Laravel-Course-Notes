@@ -32,4 +32,8 @@ class Questionnaire extends Model
 	{
 		return $this -> hasMany(Survey::class);
 	}
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
