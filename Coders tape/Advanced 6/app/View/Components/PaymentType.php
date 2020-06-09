@@ -6,14 +6,17 @@ use Illuminate\View\Component;
 
 class PaymentType extends Component
 {
+    public string $titleList;
+    public string $extra;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $titleList, string $extra)
     {
-        //
+        $this -> titleList = $titleList;
+        $this -> extra = $extra;
     }
 
     /**
@@ -24,5 +27,14 @@ class PaymentType extends Component
     public function render()
     {
         return view('components.payment-type');
+    }
+
+    public function list(string $lastValue)
+    {
+        return [
+            'great',
+            'lcfirst(str)',
+            $lastValue,
+        ];
     }
 }

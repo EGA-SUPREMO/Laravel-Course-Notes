@@ -1,6 +1,6 @@
 <div {{ $attributes -> merge(['class' => 'text-center']) }}>
-	<h1>{{ $title }}</h1>
-	<h2><strong>{{ $miniinfo }}</strong></h2>
+	<h1>{{ $titleList }}</h1>
+	<h2><strong>{{ $miniinfo . $extra }}</strong></h2>
 	<p>
 		For you
 	</p>
