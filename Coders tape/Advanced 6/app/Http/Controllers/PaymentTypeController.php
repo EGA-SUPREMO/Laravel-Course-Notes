@@ -10,6 +10,6 @@ class PaymentTypeController extends Controller
 {
 	public function index()
 	{
-		return view('paymentType.index');
+		return view('payment-type.index');
 	}
 }
