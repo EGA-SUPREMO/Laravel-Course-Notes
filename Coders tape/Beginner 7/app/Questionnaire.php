@@ -40,4 +40,8 @@ class Questionnaire extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+    public function labels()
+    {
+        return $this->morphToMany(Label::class, 'labelable');
+    }
 }

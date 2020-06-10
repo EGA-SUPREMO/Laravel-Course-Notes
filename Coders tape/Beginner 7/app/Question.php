@@ -22,4 +22,8 @@ class Question extends Model
 	{
 		return $this -> hasMany(SurveyResponse::class);
 	}
+    public function labels()
+    {
+        return $this->morphToMany(Label::class, 'labelable');
+    }
 }
