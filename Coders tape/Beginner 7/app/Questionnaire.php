@@ -36,7 +36,7 @@ class Questionnaire extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-    public function comment()
+    public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
