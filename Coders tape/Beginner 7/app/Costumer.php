@@ -16,4 +16,12 @@ class Costumer extends Model
     {
     	return $query -> where('active', $isActive);
     }
+
+    public function getActiveAttribute($value)
+    {
+    	return [
+    		'0' => 'inactive',
+    		'1' => 'active',
+       	][$value];
+    }
 }

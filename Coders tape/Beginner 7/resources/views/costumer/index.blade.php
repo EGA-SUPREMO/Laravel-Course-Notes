@@ -7,6 +7,7 @@
 @forelse($costumers as $costumer)
 	<p>
 		<a href="/costumers/{{ $costumer -> id }}">{{ $costumer -> name }}</a>({{ $costumer->email }})
+		This costumer is {{ $costumer -> active }}.
 	</p>
 @empty
 	<p>No costumer to show</p>
