@@ -8,6 +8,10 @@ class Costumer extends Model
 {
     protected $guarded = [];
 
+    protected $casts = [
+    	'active' => 'boolean',
+    ];
+
     public function scopeByActivity($query, $isActive)
     {
     	return $query -> where('active', $isActive);
