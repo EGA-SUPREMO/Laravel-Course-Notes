@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 class WelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $costumer;
+    public $costumer;
     /**
      * Create a new message instance.
      *
@@ -30,6 +30,6 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.welcome') -> with(['costumer' => $this ->costumer]);
+        return $this->markdown('email.welcome');
     }
 }
