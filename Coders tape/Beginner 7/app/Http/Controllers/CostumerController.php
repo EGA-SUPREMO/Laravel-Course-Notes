@@ -37,6 +37,7 @@ class CostumerController extends Controller
 		Mail::to($costumer->email)->send(new WelcomeMail($costumer));
 
 		session() -> flash('message', 'Thanks for sign up, we\'ll be in touch :)');
+		session() -> flash('reflash', 'first time');
 		
 		return redirect('/costumers') /*-> with('message', 'Thanks for sign up, we\'ll be in touch :)')*/;
 	}

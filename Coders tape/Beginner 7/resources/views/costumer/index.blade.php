@@ -7,6 +7,10 @@
 @if(session() -> has('message'))
 	<br>
 	<strong>Success</strong> {{ session() -> get('message') }}
+	
+	@if(session() -> has('reflash'))
+		{{ session()->keep(['message']) }}
+	@endif
 @endif
 
 @forelse($costumers as $costumer)
