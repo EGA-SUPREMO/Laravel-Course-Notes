@@ -1,9 +1,9 @@
 # Laravel Course Notes
 Those are course notes that I took while I learn with [Coder's Tape videos](https://www.youtube.com/channel/UCQI-Ym2rLZx52vEoqlPQMdg/videos).
 
-This a personal repo and it's unlike that you'll find something useful in this repo.
+This a personal repo and it's unlike that you'll find something useful here.
 
-This repo's purpose is having a proof for other people that I practiced whith laravel and a way to measure how much, so basically this is for pontential employers.
+The main purpose of this repo is having proof that I practiced with laravel and a way to measure how much, so basically this is for potential employers.
 
 ## TutorialsPoint
 I dropped the TutorialsPoint's course at Working with databases.
