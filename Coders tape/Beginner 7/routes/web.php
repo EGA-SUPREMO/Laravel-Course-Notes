@@ -23,7 +23,7 @@ Route::view('/about-us', 'aboutUs');
 Route::get('/service', 'ServicesController@index');
 Route::post('/service', 'ServicesController@store');
 
-Route::get('/costumers', 'CostumerController@index');
+Route::get('/costumers', 'CostumerController@index') -> middleware('test');
 Route::get('/costumers/create', 'CostumerController@create');
 Route::post('/costumers', 'CostumerController@store');
 Route::get('/costumers/{costumer}', 'CostumerController@show');
