@@ -17,7 +17,7 @@ use App\Costumer;
 
 Route::get('/', function () {
     return redirect('/costumers');
-});
+}) -> middleware('test');
 
 Route::view('/about-us', 'aboutUs');
 Route::get('/service', 'ServicesController@index');
