@@ -30,6 +30,7 @@ class SurveyController extends Controller
     	$survey = $questionnaire -> surveys() -> create($validatedData['survey']);
     	$survey -> responses() -> createMany($validatedData['surveyResponses']);
 
+        event(new NewSurveyHasCompletedEvent($survey));
         Mail::to('you@at.com') -> send(new NewSurveyMail($survey));
 
         dump('every hear me, pls, somobody completed the survey, this channel is slack');
