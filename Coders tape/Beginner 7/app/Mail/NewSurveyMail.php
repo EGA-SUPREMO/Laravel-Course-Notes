@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class NewSurveyMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    private $survey
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Survey $survey)
     {
-        //
+        $this->survey = $survey;
     }
 
     /**
@@ -28,6 +28,6 @@ class NewSurveyMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.new-survey');
+        return $this->markdown('email.new-survey') -> with($survey);
     }
 }
