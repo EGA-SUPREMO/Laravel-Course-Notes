@@ -7,10 +7,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+use App\Survey;
+
 class NewSurveyMail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $survey
+    public $survey;
     /**
      * Create a new message instance.
      *
@@ -28,6 +30,6 @@ class NewSurveyMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.new-survey') -> with($survey);
+        return $this->markdown('email.new-survey');
     }
 }

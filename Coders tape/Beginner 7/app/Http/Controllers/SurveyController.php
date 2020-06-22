@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 use App\Questionnaire;
+
+use App\Mail\NewSurveyMail;
 
 class SurveyController extends Controller
 {
