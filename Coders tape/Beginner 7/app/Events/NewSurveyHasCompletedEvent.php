@@ -16,13 +16,15 @@ class NewSurveyHasCompletedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $survey;
+    public $surveyResponses;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Survey $survey)
+    public function __construct(Survey $survey, array $surveyResponses)
     {
         $this -> survey = $survey;
+        $this -> surveyResponses = $surveyResponses;
     }
 }
