@@ -9,16 +9,6 @@ use Illuminate\Queue\InteractsWithQueue;
 class NotifyNewSurveyViaSlackListener
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Handle the event.
      *
      * @param  NewSurveyHasCompletedEvent  $event
@@ -26,6 +16,6 @@ class NotifyNewSurveyViaSlackListener
      */
     public function handle(NewSurveyHasCompletedEvent $event)
     {
-        //
+        dump('every hear me, pls, somobody completed the survey, this channel is slack');
     }
 }

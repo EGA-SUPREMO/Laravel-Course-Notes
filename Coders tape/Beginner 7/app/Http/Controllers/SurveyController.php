@@ -30,7 +30,6 @@ class SurveyController extends Controller
 
         event(new NewSurveyHasCompletedEvent($survey));
 
-        dump('every hear me, pls, somobody completed the survey, this channel is slack');
         dump('hear me you all, pls, somobody completed the survey, this channel is whatever you want to be when you grow up!!!!!111!');
 
     	//return 'ty';
