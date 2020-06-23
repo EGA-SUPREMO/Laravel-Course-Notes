@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\NewSurveyMail;
 
-class NotifyNewSurveyViaEmail
+class NotifyNewSurveyViaEmailListener
 {
 
     /**
