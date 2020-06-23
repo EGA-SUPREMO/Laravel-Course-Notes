@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
-
 use Illuminate\Http\Request;
 use App\Questionnaire;
 
-use App\Mail\NewSurveyMail;
 
 class SurveyController extends Controller
 {
@@ -31,7 +28,6 @@ class SurveyController extends Controller
     	$survey -> responses() -> createMany($validatedData['surveyResponses']);
 
         event(new NewSurveyHasCompletedEvent($survey));
-        Mail::to('you@at.com') -> send(new NewSurveyMail($survey));
 
         dump('every hear me, pls, somobody completed the survey, this channel is slack');
         dump('hear me you all, pls, somobody completed the survey, this channel is whatever you want to be when you grow up!!!!!111!');
