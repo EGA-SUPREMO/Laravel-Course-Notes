@@ -25,10 +25,9 @@ class SurveyController extends Controller
     		'survey.email' => 'required|email',
     	]);
 
-    	$survey = $questionnaire -> surveys() -> create($validatedData['survey']);
-    	$survey -> responses() -> createMany($validatedData['surveyResponses']);
+        $survey = $questionnaire -> surveys() -> create($validatedData['survey']);
 
-        event(new NewSurveyHasCompletedEvent($survey));
+        event(new NewSurveyHasCompletedEvent($survey, $validatedData['surveyResponses']));
 
         dump('hear me you all, pls, somobody completed the survey, this channel is whatever you want to be when you grow up!!!!!111!');
 

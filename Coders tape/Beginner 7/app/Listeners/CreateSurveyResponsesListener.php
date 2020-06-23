@@ -9,16 +9,6 @@ use Illuminate\Queue\InteractsWithQueue;
 class CreateSurveyResponsesListener
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Handle the event.
      *
      * @param  NewSurveyHasCompletedEvent  $event
@@ -26,6 +16,6 @@ class CreateSurveyResponsesListener
      */
     public function handle(NewSurveyHasCompletedEvent $event)
     {
-        //
+        $event->survey -> responses() -> createMany($event->surveyResponses);
     }
 }
