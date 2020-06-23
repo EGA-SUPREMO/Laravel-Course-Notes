@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Questionnaire;
 
+use App\Events\NewSurveyHasCompletedEvent;
 
 class SurveyController extends Controller
 {
