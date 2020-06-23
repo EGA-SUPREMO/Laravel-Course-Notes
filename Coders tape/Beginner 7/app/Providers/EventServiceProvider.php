@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Event;
 
 use App\Events\NewSurveyHasCompletedEvent;
 use App\Listeners\NotifyNewSurveyViaEmailListener;
+use App\Listeners\NotifyNewSurveyViaSlackListener;
+use App\Listeners\CreateSurveyResponsesListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,7 +24,9 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         NewSurveyHasCompletedEvent::class => [
+            CreateSurveyResponsesListener::class,
             NotifyNewSurveyViaEmailListener::class,
+            NotifyNewSurveyViaSlackListener::class,
         ]
     ];
 
