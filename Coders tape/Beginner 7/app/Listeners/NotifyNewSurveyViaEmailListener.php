@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Mail\NewSurveyMail;
 
-class NotifyNewSurveyViaEmailListener
+class NotifyNewSurveyViaEmailListener implements ShouldQueue
 {
 
     /**
@@ -19,6 +19,8 @@ class NotifyNewSurveyViaEmailListener
      */
     public function handle($event)
     {
+        sleep(40);
+
         Mail::to('you@at.com') -> send(new NewSurveyMail($event -> survey));
     }
 }
