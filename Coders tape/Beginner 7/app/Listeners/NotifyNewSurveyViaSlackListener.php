@@ -6,7 +6,7 @@ use App\Events\NewSurveyHasCompletedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class NotifyNewSurveyViaSlackListener
+class NotifyNewSurveyViaSlackListener implements ShouldQueue
 {
     /**
      * Handle the event.
