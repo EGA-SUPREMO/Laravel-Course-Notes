@@ -3,6 +3,8 @@
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -17,3 +19,14 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+Artisan::command('user:clean-up', function () {
+	$this->info('Cleanning for you :)');
+    User::whereDoesntHave('questionnaires')
+    	->get()
+    	->each(function ($user)
+    	{
+    		$user->delete();
+
+    		$this->warn($user->name.' was deleted, hope you are now happy, you dream-breaker!');
+    	});
+})->describe('Clean every user who doesn\'t have an questionnaire.');
