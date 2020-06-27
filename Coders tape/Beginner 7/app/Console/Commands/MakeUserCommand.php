@@ -13,7 +13,7 @@ class MakeUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user {name=Juan Morrales Feo} {email=yourock@here.com} {password=nevermind}';
+    protected $signature = 'make:user {name=Juan Morrales Feo} {email=yourock@here.com} {password=nevermind} {--i|interactive}';
 
     /**
      * The console command description.
@@ -29,10 +29,16 @@ class MakeUserCommand extends Command
      */
     public function handle()
     {
+        if($this->option('interactive')) {
+            $name = $this->ask('What\'s the name of the user?');
+            $email = $this->ask('What\'s the email of the user?');
+            $password = $this->ask('What\'s the password of the user?');
+        }
+
         $user = User::create([
-            'name' => $this->argument('name'),
-            'email' => $this->argument('email'),
-            'password' => $this->argument('password'),
+            'name' => $name ?? $this->argument('name'),
+            'email' => $email ?? $this->argument('email'),
+            'password' => $password ?? $this->argument('password'),
         ]);
 
         $this->info($user->name.' added successfully.');
