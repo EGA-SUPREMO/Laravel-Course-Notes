@@ -13,14 +13,14 @@ class MakeUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user';
+    protected $signature = 'make:user {name=Juan Morrales Feo} {email=yourock@here.com} {password=nevermind}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Add a new user to the database';
+    protected $description = 'Add a new user to the users table';
 
     /**
      * Execute the console command.
@@ -29,12 +29,12 @@ class MakeUserCommand extends Command
      */
     public function handle()
     {
-        User::create([
-            'name' => '',
-            'email' => '',
-            'password' => '',
+        $user = User::create([
+            'name' => $this->argument('name'),
+            'email' => $this->argument('email'),
+            'password' => $this->argument('password'),
         ]);
 
-        $this->info(' added successfully.');
+        $this->info($user->name.' added successfully.');
     }
 }
