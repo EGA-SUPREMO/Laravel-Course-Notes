@@ -36,5 +36,8 @@ class MakeUserCommand extends Command
         ]);
 
         $this->info($user->name.' added successfully.');
+        $this->warn('This is a nonsense warning');
+        $this->error('Error, warning printed');
+        $this->error('Error, broken english');
     }
 }
