@@ -78,7 +78,12 @@ class CostumerController extends Controller
 				'required',
 				'email',
 				'min:5',
-			], $extraRules)
+			], $extraRules),
+			'image' => [
+				'file',
+				'image',
+				'max:5000',
+			],
 		]);
 	}
 }
