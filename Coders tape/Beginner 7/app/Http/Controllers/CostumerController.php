@@ -33,8 +33,9 @@ class CostumerController extends Controller
 		$extraRules = [ Rule::unique('costumers') ];
 
 		$costumer = Costumer::create($this->validatedData($extraRules));
-
-		Mail::to($costumer->email)->send(new WelcomeMail($costumer));
+		try {//I know I know, there're better ways
+			Mail::to($costumer->email)->send(new WelcomeMail($costumer));
+		} catch (Exception $ignored) { }
 
 		session() -> flash('message', 'Thanks for sign up, we\'ll be in touch :)');
 		session() -> flash('reflash', 'first time');
