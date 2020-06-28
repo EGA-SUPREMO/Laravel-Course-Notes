@@ -33,6 +33,7 @@ class CostumerController extends Controller
 		$extraRules = [ Rule::unique('costumers') ];
 
 		$costumer = Costumer::create($this->validatedData($extraRules));
+		$this->storeImage($costumer);
 
 		Mail::to($costumer->email)->send(new WelcomeMail($costumer));
 
@@ -54,6 +55,7 @@ class CostumerController extends Controller
 	{
 		$extraRules = [ Rule::unique('costumers')->ignore($costumer->id) ];
 		$costumer -> update($this->validatedData($extraRules));
+		$this->storeImage($costumer);
 
 		return redirect('/costumers');
 	}
@@ -85,5 +87,13 @@ class CostumerController extends Controller
 				'max:5000',
 			],
 		]);
+	}
+	public function storeImage(Costumer $costumer)
+	{
+		if(request()->has('image')) {
+			$costumer->update([
+				'image' => request()->image->store('uploads', 'public');
+			]);
+		}
 	}
 }
