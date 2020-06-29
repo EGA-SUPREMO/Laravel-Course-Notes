@@ -12,3 +12,11 @@
 	@csrf
 	<button type="submit">Delete</button>
 </form>
+
+@if($costumer->image)
+	<div class="row">
+		<div class="col-12">
+			<img src="{{ asset('storage/'.$costumer->image) }}" class="img-thumbnail">
+		</div>
+	</div>
+@endif
