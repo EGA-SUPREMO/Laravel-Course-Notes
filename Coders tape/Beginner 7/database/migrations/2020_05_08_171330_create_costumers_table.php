@@ -18,6 +18,7 @@ class CreateCostumersTable extends Migration
             $table->string('name');
             $table->unsignedInteger('active')->default(1);
             $table->string('email');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
