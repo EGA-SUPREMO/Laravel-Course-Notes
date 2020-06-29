@@ -33,6 +33,8 @@ class CostumerController extends Controller
 		$extraRules = [ Rule::unique('costumers') ];
 
 		$costumer = Costumer::create($this->validatedData($extraRules));
+		$this->storeImage($costumer);
+
 		try {//I know I know, there're better ways and this is only for testing
 			Mail::to($costumer->email)->send(new WelcomeMail($costumer));
 		} catch (\Swift_TransportException $ignored) { }
@@ -55,6 +57,7 @@ class CostumerController extends Controller
 	{
 		$extraRules = [ Rule::unique('costumers')->ignore($costumer->id) ];
 		$costumer -> update($this->validatedData($extraRules));
+		$this->storeImage($costumer);
 
 		return redirect('/costumers');
 	}
@@ -79,7 +82,20 @@ class CostumerController extends Controller
 				'required',
 				'email',
 				'min:5',
-			], $extraRules)
+			], $extraRules),
+			'image' => [
+				'file',
+				'image',
+				'max:5000',
+			],
 		]);
+	}
+	public function storeImage(Costumer $costumer)
+	{
+		if(request()->has('image')) {
+			$costumer->update([
+				'image' => request()->image->store('uploads', 'public');
+			]);
+		}
 	}
 }
