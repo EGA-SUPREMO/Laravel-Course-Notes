@@ -94,7 +94,7 @@ class CostumerController extends Controller
 	{
 		if(request()->has('image')) {
 			$costumer->update([
-				'image' => request()->image->store('uploads', 'public');
+				'image' => request()->image->store('uploads', 'public'),
 			]);
 		}
 	}
