@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
 
+use Intervention\Image\Facades\Image;
+
 class CostumerController extends Controller
 {
 	public function index(Request $request)
@@ -96,6 +98,9 @@ class CostumerController extends Controller
 			$costumer->update([
 				'image' => request()->image->store('uploads', 'public'),
 			]);
+
+			$image = Image::make(public_path('/storage/'. $costumer->image))->fit(300, 300);
+			$image->save();
 		}
 	}
 }
