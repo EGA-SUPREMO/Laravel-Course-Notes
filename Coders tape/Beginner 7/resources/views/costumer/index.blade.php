@@ -43,4 +43,10 @@
 @empty
 	<p>No costumer to show</p>
 @endforelse
+
+<div class="row">
+	<div class="col-12 d-flex justify-content-center pt-5">
+		{{ $costumers->links() }}
+	</div>
+</div>
 </body>

@@ -16,7 +16,7 @@ class CostumerController extends Controller
 	public function index(Request $request)
 	{
 		$isActive = $request->query('active', 1);
-		$costumers = Costumer::byActivity($isActive) -> get();//first(); for one element
+		$costumers = Costumer::byActivity($isActive) -> paginate(1);//first(); for one element
 		// get() returns a fancy array
 		// find() you can pass an int to get one row by id
 
