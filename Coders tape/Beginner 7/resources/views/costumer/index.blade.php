@@ -22,7 +22,12 @@
 <body>
 <h1>Costumers</h1>
 
-<a href="/costumers/create">add a new costumer</a>
+@can('create', App\Costumer::class)
+	<a href="/costumers/create">add a new costumer</a>
+@endcan
+
+
+
 <a href="/costumers/?active=1">active Costumers</a>
 <a href="/costumers/?active=0">Inactive Costumers</a>
 
