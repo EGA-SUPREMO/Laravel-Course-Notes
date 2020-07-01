@@ -42,7 +42,14 @@
 
 @forelse($costumers as $costumer)
 	<p>
-		<a href="/costumers/{{ $costumer -> id }}">{{ $costumer -> name }}</a>({{ $costumer->email }})
+		@can('view', $costumer)
+			<a href="/costumers/{{ $costumer -> id }}">
+				{{ $costumer -> name }}</a>({{ $costumer->email }})
+		@endcan
+
+		@cannot('view', $costumer)
+			{{ $costumer -> name }}({{ $costumer->email }})
+		@endcannot
 		This costumer is {{ $costumer -> active }}.
 	</p>
 @empty
