@@ -18,7 +18,6 @@ class CostumerPolicy
      */
     public function viewAny(User $user)
     {
-        //
     }
 
     /**
@@ -30,7 +29,9 @@ class CostumerPolicy
      */
     public function view(User $user, Costumer $Costumer)
     {
-        //
+        return [$user->email => [
+            'admin@admin.com',
+        ]];
     }
 
     /**

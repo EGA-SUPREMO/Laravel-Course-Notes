@@ -26,7 +26,7 @@ Route::post('/service', 'ServicesController@store');
 Route::get('/costumers', 'CostumerController@index') -> middleware('test');
 Route::get('/costumers/create', 'CostumerController@create');
 Route::post('/costumers', 'CostumerController@store');
-Route::get('/costumers/{costumer}', 'CostumerController@show');
+Route::get('/costumers/{costumer}', 'CostumerController@show')->middleware('can:view,costumer');
 Route::get('/costumers/{costumer}/edit', 'CostumerController@edit');
 Route::patch('/costumers/{costumer}', 'CostumerController@update');
 Route::delete('/costumers/{costumer}', 'CostumerController@destroy');
