@@ -67,6 +67,8 @@ class CostumerController extends Controller
 	}
 	public function destroy(Costumer $costumer)
 	{
+		$this->authorize('delete', $costumer);
+
 		$costumer->delete($costumer);
 		
 		return redirect('/costumers');

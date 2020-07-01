@@ -67,7 +67,9 @@ class CostumerPolicy
      */
     public function delete(User $user, Costumer $Costumer)
     {
-        //
+        return [$user->email => [
+            'admin@admin.com',
+        ]];
     }
 
     /**
