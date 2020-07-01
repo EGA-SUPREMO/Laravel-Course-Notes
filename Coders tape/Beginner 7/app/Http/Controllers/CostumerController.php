@@ -32,6 +32,8 @@ class CostumerController extends Controller
 
 	public function store()
 	{
+		$this->authorize('create', Costumer::class);
+
 		$extraRules = [ Rule::unique('costumers') ];
 
 		$costumer = Costumer::create($this->validatedData($extraRules));
