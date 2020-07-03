@@ -57,7 +57,7 @@ Route::get('/relationships', function()
 	$user->roles()->sync([1, 3, 5]);
 	$user->roles()->syncWithoutDetaching([1, 3, 5]);*///most usefful for mee
 	//$user->roles()->detach($roles);
-
+	dd($user->roles()->first()->pivot->name);
 	$user->roles()->syncWithoutDetaching([1 => [
 		'name' => 'Gustavo Fernandez Salas',
 	]]);
