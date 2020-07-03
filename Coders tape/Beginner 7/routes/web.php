@@ -52,6 +52,7 @@ Route::get('/relationships', function()
 
 	$roles = Role::all();
 
-	$user->roles()->attach($roles);
+	//$user->roles()->attach($roles);
+	$user->roles()->detach($roles);
 
 });
