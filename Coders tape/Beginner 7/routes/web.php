@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Mail\WelcomeMail;
 use App\Costumer;
+use App\User;
+use App\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +45,11 @@ Route::resource('/questionnaires/{questionnaire}/questions', 'QuestionController
 
 Route::get('/survey/{questionnaire}-{slug}', 'SurveyController@show');//Purposefully not following the RESTful controllers cuz I want to document the slug usage
 Route::post('/survey/{questionnaire}-{slug}', 'SurveyController@store');
+
+Route::get('/relationships', function()
+{
+	$user = User::first();
+
+	$roles = Role::all();
+
+});
