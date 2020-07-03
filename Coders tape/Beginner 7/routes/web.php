@@ -52,10 +52,13 @@ Route::get('/relationships', function()
 
 	$roles = Role::all();
 
-	$user->roles()->attach($roles);
+/*	$user->roles()->attach($roles);
 	$user->roles()->attach([1, 3, 5]);
 	$user->roles()->sync([1, 3, 5]);
-	$user->roles()->syncWithoutDetaching([1, 3, 5]);//most usefful for mee
+	$user->roles()->syncWithoutDetaching([1, 3, 5]);*///most usefful for mee
 	//$user->roles()->detach($roles);
-
+	dd($user->roles()->first()->pivot->name);
+	$user->roles()->syncWithoutDetaching([1 => [
+		'name' => 'Gustavo Fernandez Salas',
+	]]);
 });
