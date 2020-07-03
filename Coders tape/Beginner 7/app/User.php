@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->morphToMany(Label::class, 'labelable');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
 }
