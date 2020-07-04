@@ -11,11 +11,11 @@ class Questionnaire extends Model
 
     public function path()
     {
-        return '/questionnaires/' . $this->id;
+        return url('/questionnaires/' . $this->id);
     }
     public function publicPath()
     {
-        return '/survey/'. $this -> id . '-' . Str::slug($this -> title);
+        return url('/survey/'. $this -> id . '-' . Str::slug($this -> title));
     }
 
     public function user()

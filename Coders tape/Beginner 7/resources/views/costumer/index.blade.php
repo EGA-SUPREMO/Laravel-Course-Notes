@@ -43,7 +43,7 @@
 @forelse($costumers as $costumer)
 	<p>
 		@can('view', $costumer)
-			<a href="/costumers/{{ $costumer -> id }}">
+			<a href="/costumers/{{ $costumer -> name }}">
 				{{ $costumer -> name }}</a>({{ $costumer->email }})
 		@endcan
 

@@ -15,7 +15,7 @@ class CreateCostumersTable extends Migration
     {
         Schema::create('costumers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->unsignedInteger('active')->default(1);
             $table->string('email');
             $table->string('image')->nullable();

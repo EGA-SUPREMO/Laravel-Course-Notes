@@ -24,4 +24,9 @@ class Costumer extends Model
     		'1' => 'active',
        	][$value];
     }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }
