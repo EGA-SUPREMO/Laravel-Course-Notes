@@ -39,7 +39,10 @@
 		{{ session()->keep(['message']) }}
 	@endif
 @endif
-
+<br>
+{{ __('index.test multiple', ['username' => 'Jonny']) }}
+We want {{ trans_choice('index.how many apples', 10) }}
+<br>
 @forelse($costumers as $costumer)
 	<p>
 		@can('view', $costumer)
