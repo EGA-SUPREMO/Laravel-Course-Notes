@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/books', 'BookController@create');
+Route::post('/books', 'BookController@store');

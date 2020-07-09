@@ -9,6 +9,8 @@ use App\Book;
 
 class BookReservationTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @return void
      */
@@ -22,6 +24,6 @@ class BookReservationTest extends TestCase
         ]);
 
         $response->assertOk();
-        $response->assertCount(1,  Book::all());
+        $this->assertCount(1, Book::all());
     }
 }
