@@ -12,6 +12,8 @@ class BookReservationTest extends TestCase
      */
     public function testBookCanBeAdded()
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->post('/books', [
             'title' => 'Good book',
             'author' => 'Don Reveron',
