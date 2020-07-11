@@ -26,4 +26,15 @@ class BookReservationTest extends TestCase
         $response->assertOk();
         $this->assertCount(1, Book::all());
     }
+
+    /** @test */
+    public function testTitleIsRequired()
+    {
+        $response = $this->post('/books', [
+            'title' => '',
+            'author' => 'Don Reveron',
+        ]);
+
+        $response->assertSessionHasErrors('title');
+    }
 }
