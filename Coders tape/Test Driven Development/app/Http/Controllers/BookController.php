@@ -35,10 +35,11 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        Book::create([
-            'title' => 'Good book',
-            'author' => 'Don Reveron',
+        $validatedData = request() -> validate([
+            'title' => 'required',
+            'author' => 'required',
         ]);
+        Book::create($validatedData);
     }
 
     /**
