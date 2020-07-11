@@ -45,4 +45,22 @@ class BookReservationTest extends TestCase
 
         $response->assertSessionHasErrors('author');
     }
+
+    public function testBookCanBeEdited()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->post('/books', [
+            'title' => 'Good book',
+            'author' => 'Don Reveron',
+        ]);
+
+        $response = $this->patch('/books/'.Book::first()->id, [
+            'title' => 'New Title',
+            'author' => 'Ernesto',
+        ]);
+
+        $this->assertEquals('New Title', Book::first()->title);
+        $this->assertEquals('Ernesto', Book::first()->author);
+    }
 }
