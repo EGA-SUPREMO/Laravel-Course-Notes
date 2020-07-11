@@ -35,11 +35,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = request() -> validate([
-            'title' => 'required',
-            'author' => 'required',
-        ]);
-        Book::create($validatedData);
+        Book::create($this->validateRequest());
     }
 
     /**
@@ -73,11 +69,7 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $validatedData = request() -> validate([
-            'title' => 'required',
-            'author' => 'required',
-        ]);
-        $book->update($validatedData);
+        $book->update($this->validateRequest());
     }
 
     /**
@@ -89,5 +81,13 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
+    }
+
+    protected function validateRequest()
+    {
+        return request() -> validate([
+            'title' => 'required',
+            'author' => 'required',
+        ]);
     }
 }
