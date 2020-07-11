@@ -73,7 +73,11 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $validatedData = request() -> validate([
+            'title' => 'required',
+            'author' => 'required',
+        ]);
+        $book->update($validatedData);
     }
 
     /**
