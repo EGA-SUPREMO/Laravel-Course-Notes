@@ -46,4 +46,5 @@ class QuestionnaireTest extends TestCase
 
         $this->assertCount(1, Questionnaire::all());
     }
+
 }
