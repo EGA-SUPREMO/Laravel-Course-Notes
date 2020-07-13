@@ -12,6 +12,14 @@ use App\Questionnaire;
 class QuestionnaireTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp()
+    {
+        parent::setUp();
+        
+        Event::fake();
+    }
+
     /**
      * A basic test example.
      * 
@@ -34,7 +42,6 @@ class QuestionnaireTest extends TestCase
 
     public function testQuestionnaireCanBeAddedThroughTheForm()
     {
-        Event::fake();
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
@@ -46,5 +53,6 @@ class QuestionnaireTest extends TestCase
 
         $this->assertCount(1, Questionnaire::all());
     }
+
 
 }
