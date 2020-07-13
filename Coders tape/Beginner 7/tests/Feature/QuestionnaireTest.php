@@ -3,9 +3,11 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 use App\User;
+use App\Questionnaire;
 
 class QuestionnaireTest extends TestCase
 {
@@ -20,6 +22,7 @@ class QuestionnaireTest extends TestCase
         $response = $this->get('/questionnaires')
             ->assertRedirect('/login');
     }
+
     public function testLoggedUserAccessToQuestionnaireIndex()
     {
         $this->actingAs(factory(User::class)->create());
@@ -28,4 +31,20 @@ class QuestionnaireTest extends TestCase
 
         $response->assertOk();
     }
+
+    public function testQuestionnaireCanBeAddedThroughTheForm()
+    {
+        Event::fake();
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
+
+        $response = $this->post('/questionnaires', [
+            'title' => 'good to go',
+            'purpose' => 'going to good',
+        ]);
+
+        $this->assertCount(1, Questionnaire::all());
+    }
+
 }
