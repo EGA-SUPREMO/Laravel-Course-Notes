@@ -16,7 +16,7 @@ class QuestionnaireTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        
+
         Event::fake();
     }
 
@@ -33,7 +33,7 @@ class QuestionnaireTest extends TestCase
 
     public function testLoggedUserAccessToQuestionnaireIndex()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->login();
 
         $response = $this->get('/questionnaires');
 
@@ -43,8 +43,8 @@ class QuestionnaireTest extends TestCase
     public function testQuestionnaireCanBeAddedThroughTheForm()
     {
         $this->withoutExceptionHandling();
-
-        $this->actingAs(factory(User::class)->create());
+        
+        $this->login();
 
         $response = $this->post('/questionnaires', [
             'title' => 'good to go',
@@ -54,5 +54,8 @@ class QuestionnaireTest extends TestCase
         $this->assertCount(1, Questionnaire::all());
     }
 
-
+    private function login()
+    {
+        $this->actingAs(factory(User::class)->create());
+    }
 }
