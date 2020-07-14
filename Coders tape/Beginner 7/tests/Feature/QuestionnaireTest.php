@@ -53,6 +53,34 @@ class QuestionnaireTest extends TestCase
 
         $this->assertCount(1, Questionnaire::all());
     }
+    public function testTitleIsRequired()
+    {
+        Event::fake();
+
+        $this->actingAs(factory(User::class)->create());
+
+        $response = $this->post('/questionnaires', [
+            'title' => '',
+            'purpose' => 'going to good',
+        ]);
+
+        $response->assertSessionHasErrors('title');
+        $this->assertCount(0, Questionnaire::all());
+    }
+    public function testPurposeIsRequired()
+    {
+        Event::fake();
+
+        $this->actingAs(factory(User::class)->create());
+
+        $response = $this->post('/questionnaires', [
+            'title' => 'good to go',
+            'purpose' => '',
+        ]);
+
+        $response->assertSessionHasErrors('purpose');
+        $this->assertCount(0, Questionnaire::all());
+    }
 
     private function login()
     {
