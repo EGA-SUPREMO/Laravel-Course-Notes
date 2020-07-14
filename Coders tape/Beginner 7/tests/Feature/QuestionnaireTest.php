@@ -12,6 +12,14 @@ use App\Questionnaire;
 class QuestionnaireTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        Event::fake();
+    }
+
     /**
      * A basic test example.
      * 
@@ -25,7 +33,7 @@ class QuestionnaireTest extends TestCase
 
     public function testLoggedUserAccessToQuestionnaireIndex()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->login();
 
         $response = $this->get('/questionnaires');
 
@@ -34,9 +42,9 @@ class QuestionnaireTest extends TestCase
 
     public function testQuestionnaireCanBeAddedThroughTheForm()
     {
-        Event::fake();
-
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutExceptionHandling();
+        
+        $this->login();
 
         $response = $this->post('/questionnaires', [
             'title' => 'good to go',
@@ -74,4 +82,8 @@ class QuestionnaireTest extends TestCase
         $this->assertCount(0, Questionnaire::all());
     }
 
+    private function login()
+    {
+        $this->actingAs(factory(User::class)->create());
+    }
 }
