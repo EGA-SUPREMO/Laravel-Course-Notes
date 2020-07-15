@@ -13,4 +13,8 @@ class Book extends Model
      */
     protected $guarded = [];
     
+    public function path()
+    {
+        return url('/books/'. $this->id);
+    }
 }
