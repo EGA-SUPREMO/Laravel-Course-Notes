@@ -78,7 +78,7 @@ class BookReservationTest extends TestCase
         $response = $this->delete('/books/'.Book::first()->id);
 
         $this->assertCount(0, Book::all());
-        $response->assertRedirect('/books/');
+        $response->assertRedirect('/books');
 
     }
 }
