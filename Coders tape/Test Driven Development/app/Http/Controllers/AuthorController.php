@@ -93,7 +93,7 @@ class AuthorController extends Controller
     {
         return request() -> validate([
             'name' => 'required',
-            'birth' => 'required',
+            'birth' => 'required|date',
         ]);
     }
 }

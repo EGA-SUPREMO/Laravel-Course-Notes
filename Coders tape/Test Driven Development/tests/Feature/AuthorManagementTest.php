@@ -20,7 +20,7 @@ class AuthorManagementTest extends TestCase
 
         $response = $this->post('/authors', [
             'name' => 'Good author',
-            'birth' => 'Don Reveron',
+            'birth' => '2020/02/06',
         ]);
 
         $response->assertRedirect(Author::first()->path());
@@ -31,7 +31,7 @@ class AuthorManagementTest extends TestCase
     {
         $response = $this->post('/authors', [
             'name' => '',
-            'birth' => 'Don Reveron',
+            'birth' => '2020/02/06',
         ]);
 
         $response->assertSessionHasErrors('name');
@@ -52,25 +52,25 @@ class AuthorManagementTest extends TestCase
 
         $this->post('/authors', [
             'name' => 'Good author',
-            'birth' => 'Don Reveron',
+            'birth' => '2020/02/06',
         ]);
 
         $response = $this->patch('/authors/'.Author::first()->id, [
             'name' => 'New Name',
-            'birth' => 'Ernesto',
+            'birth' => '2020/01/07',
         ]);
 
         $response->assertRedirect(Author::first()->path());
 
         $this->assertEquals('New Name', Author::first()->name);
-        $this->assertEquals('Ernesto', Author::first()->birth);
+        $this->assertEquals('2020/01/07', Author::first()->birth);
     }
 
     public function test_author_can_be_deleted()
     {
         $this->post('/authors', [
             'name' => 'Good author',
-            'birth' => 'Don Reveron',
+            'birth' => '2020/02/06',
         ]);
 
         $this->assertCount(1, Author::all());
