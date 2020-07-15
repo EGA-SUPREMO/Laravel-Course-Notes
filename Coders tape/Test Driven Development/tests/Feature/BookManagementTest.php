@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 use App\Book;
 
-class BookReservationTest extends TestCase
+class BookManagementTest extends TestCase
 {
     use RefreshDatabase;
 
