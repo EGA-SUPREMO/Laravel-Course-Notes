@@ -14,7 +14,7 @@ class BookReservationTest extends TestCase
     /**
      * @return void
      */
-    public function testBookCanBeAdded()
+    public function test_book_can_be_added()
     {
         $this->withoutExceptionHandling();
 
@@ -27,7 +27,7 @@ class BookReservationTest extends TestCase
         $this->assertCount(1, Book::all());
     }
 
-    public function testTitleIsRequired()
+    public function test_title_is_required()
     {
         $response = $this->post('/books', [
             'title' => '',
@@ -36,7 +36,7 @@ class BookReservationTest extends TestCase
 
         $response->assertSessionHasErrors('title');
     }
-    public function testAuthorIsRequired()
+    public function test_author_is_required()
     {
         $response = $this->post('/books', [
             'title' => 'Good book',
@@ -46,7 +46,7 @@ class BookReservationTest extends TestCase
         $response->assertSessionHasErrors('author');
     }
 
-    public function testBookCanBeEdited()
+    public function test_book_can_be_edited()
     {
         $this->withoutExceptionHandling();
 
@@ -64,7 +64,7 @@ class BookReservationTest extends TestCase
         $this->assertEquals('Ernesto', Book::first()->author);
     }
 
-    public function testBookCanBeDeleted()
+    public function test_book_can_be_deleted()
     {
         $this->post('/books', [
             'title' => 'Good book',
