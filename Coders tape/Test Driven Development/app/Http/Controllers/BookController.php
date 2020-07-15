@@ -80,7 +80,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        echo 'hey';
+        $book->delete();
     }
 
     protected function validateRequest()
