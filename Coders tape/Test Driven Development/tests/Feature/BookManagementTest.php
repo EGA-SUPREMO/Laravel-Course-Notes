@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+use App\Author;
 use App\Book;
 
 class BookManagementTest extends TestCase
@@ -69,6 +70,16 @@ class BookManagementTest extends TestCase
         $this->assertCount(0, Book::all());
         $response->assertRedirect('/books');
 
+    }
+
+    public function test_author_is_automatally_added_when_a_new_book_is_added($value='')
+    {
+        $this->post('/books', $this->data());
+
+        $this->assertCount(1, $book = Book::all());
+        $this->assertCount(1, $author = Author::all());
+
+        $this->assertEquals($author->first()->id, $book->first()->author_id);
     }
 
     private function data()
