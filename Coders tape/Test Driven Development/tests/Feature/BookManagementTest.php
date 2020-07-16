@@ -18,10 +18,7 @@ class BookManagementTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/books', [
-            'title' => 'Good book',
-            'author' => 'Don Reveron',
-        ]);
+        $response = $this->post('/books', $this->data());
 
         $response->assertRedirect(Book::first()->path());
         $this->assertCount(1, Book::all());
@@ -29,19 +26,17 @@ class BookManagementTest extends TestCase
 
     public function test_title_is_required()
     {
-        $response = $this->post('/books', [
+        $response = $this->post('/books', array_merge($this->data(), [
             'title' => '',
-            'author' => 'Don Reveron',
-        ]);
+        ]));
 
         $response->assertSessionHasErrors('title');
     }
     public function test_author_is_required()
     {
-        $response = $this->post('/books', [
-            'title' => 'Good book',
+        $response = $this->post('/books', array_merge($this->data(), [
             'author' => '',
-        ]);
+        ]));
 
         $response->assertSessionHasErrors('author');
     }
@@ -50,10 +45,7 @@ class BookManagementTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->post('/books', [
-            'title' => 'Good book',
-            'author' => 'Don Reveron',
-        ]);
+        $this->post('/books', $this->data());
 
         $response = $this->patch('/books/'.Book::first()->id, [
             'title' => 'New Title',
@@ -68,10 +60,7 @@ class BookManagementTest extends TestCase
 
     public function test_book_can_be_deleted()
     {
-        $this->post('/books', [
-            'title' => 'Good book',
-            'author' => 'Don Reveron',
-        ]);
+        $this->post('/books', $this->data());
 
         $this->assertCount(1, Book::all());
 
@@ -80,5 +69,13 @@ class BookManagementTest extends TestCase
         $this->assertCount(0, Book::all());
         $response->assertRedirect('/books');
 
+    }
+
+    private function data()
+    {
+        return [
+            'title' => 'Good book',
+            'author' => 'Don Reveron',
+        ];
     }
 }
