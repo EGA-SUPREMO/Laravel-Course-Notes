@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+use App\Author;
 use App\Book;
 
 class BookManagementTest extends TestCase
@@ -35,10 +36,10 @@ class BookManagementTest extends TestCase
     public function test_author_is_required()
     {
         $response = $this->post('/books', array_merge($this->data(), [
-            'author' => '',
+            'author_id' => '',
         ]));
 
-        $response->assertSessionHasErrors('author');
+        $response->assertSessionHasErrors('author_id');
     }
 
     public function test_book_can_be_edited()
@@ -49,13 +50,13 @@ class BookManagementTest extends TestCase
 
         $response = $this->patch('/books/'.Book::first()->id, [
             'title' => 'New Title',
-            'author' => 'Ernesto',
+            'author_id' => 'Ernesto',
         ]);
 
         $response->assertRedirect(Book::first()->path());
 
         $this->assertEquals('New Title', Book::first()->title);
-        $this->assertEquals('Ernesto', Book::first()->author);
+        $this->assertEquals(2, Book::first()->author_id);
     }
 
     public function test_book_can_be_deleted()
@@ -71,11 +72,21 @@ class BookManagementTest extends TestCase
 
     }
 
+    public function test_author_is_automatally_added_when_a_new_book_is_added($value='')
+    {
+        $this->post('/books', $this->data());
+
+        $this->assertCount(1, $book = Book::all());
+        $this->assertCount(1, $author = Author::all());
+
+        $this->assertEquals($author->first()->id, $book->first()->author_id);
+    }
+
     private function data()
     {
         return [
             'title' => 'Good book',
-            'author' => 'Don Reveron',
+            'author_id' => 'Don Reveron',
         ];
     }
 }
