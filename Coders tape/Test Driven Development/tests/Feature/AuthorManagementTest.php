@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,6 +25,7 @@ class AuthorManagementTest extends TestCase
         ]);
 
         $response->assertRedirect(Author::first()->path());
+        $this->assertInstanceOf(Carbon::class, Author::first()->birth);
         $this->assertCount(1, Author::all());
     }
 
