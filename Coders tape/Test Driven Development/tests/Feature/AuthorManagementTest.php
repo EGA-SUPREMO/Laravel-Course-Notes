@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -24,6 +25,7 @@ class AuthorManagementTest extends TestCase
         ]);
 
         $response->assertRedirect(Author::first()->path());
+        $this->assertInstanceOf(Carbon::class, Author::first()->birth);
         $this->assertCount(1, Author::all());
     }
 
@@ -63,7 +65,7 @@ class AuthorManagementTest extends TestCase
         $response->assertRedirect(Author::first()->path());
 
         $this->assertEquals('New Name', Author::first()->name);
-        $this->assertEquals('2020/01/07', Author::first()->birth);
+        $this->assertEquals('2020/01/07', Author::first()->birth->format('Y/m/d'));
     }
 
     public function test_author_can_be_deleted()

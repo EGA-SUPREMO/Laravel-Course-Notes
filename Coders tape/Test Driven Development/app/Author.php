@@ -12,6 +12,8 @@ class Author extends Model
      * @var array
      */
     protected $guarded = [];
+
+    protected $dates = ['birth'];
     
     public function path()
     {
