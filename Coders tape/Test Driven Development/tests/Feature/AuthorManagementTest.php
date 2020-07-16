@@ -19,10 +19,7 @@ class AuthorManagementTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->post('/authors', [
-            'name' => 'Good author',
-            'birth' => '2020/02/06',
-        ]);
+        $response = $this->post('/authors', $this->data());
 
         $response->assertRedirect(Author::first()->path());
         $this->assertInstanceOf(Carbon::class, Author::first()->birth);
@@ -31,19 +28,17 @@ class AuthorManagementTest extends TestCase
 
     public function test_name_is_required()
     {
-        $response = $this->post('/authors', [
+        $response = $this->post('/authors', array_merge($this->data(), [
             'name' => '',
-            'birth' => '2020/02/06',
-        ]);
+        ]));
 
         $response->assertSessionHasErrors('name');
     }
     public function test_birth_is_required()
     {
-        $response = $this->post('/authors', [
-            'name' => 'Good author',
+        $response = $this->post('/authors', array_merge($this->data(), [
             'birth' => '',
-        ]);
+        ]));
 
         $response->assertSessionHasErrors('birth');
     }
@@ -52,10 +47,7 @@ class AuthorManagementTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $this->post('/authors', [
-            'name' => 'Good author',
-            'birth' => '2020/02/06',
-        ]);
+        $this->post('/authors', $this->data());
 
         $response = $this->patch('/authors/'.Author::first()->id, [
             'name' => 'New Name',
@@ -70,10 +62,7 @@ class AuthorManagementTest extends TestCase
 
     public function test_author_can_be_deleted()
     {
-        $this->post('/authors', [
-            'name' => 'Good author',
-            'birth' => '2020/02/06',
-        ]);
+        $this->post('/authors', $this->data());
 
         $this->assertCount(1, Author::all());
 
@@ -82,5 +71,13 @@ class AuthorManagementTest extends TestCase
         $this->assertCount(0, Author::all());
         $response->assertRedirect('/authors');
 
+    }
+
+    private function data()
+    {
+        return [
+            'name' => 'Good author',
+            'birth' => '2020/02/06',
+        ];
     }
 }
