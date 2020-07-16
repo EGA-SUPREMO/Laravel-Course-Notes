@@ -56,7 +56,7 @@ class BookManagementTest extends TestCase
         $response->assertRedirect(Book::first()->path());
 
         $this->assertEquals('New Title', Book::first()->title);
-        $this->assertEquals('Ernesto', Book::first()->author_id);
+        $this->assertEquals(2, Book::first()->author_id);
     }
 
     public function test_book_can_be_deleted()
