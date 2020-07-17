@@ -3,10 +3,12 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Book;
+use App\Author;
 use Faker\Generator as Faker;
 
 $factory->define(Book::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->sentence,
+        'author_id' => factory(Author::class),
     ];
 });
