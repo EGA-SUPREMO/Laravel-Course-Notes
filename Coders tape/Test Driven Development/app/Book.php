@@ -32,6 +32,14 @@ class Book extends Model
             'check_out_at' => now(),
         ]);
     }
+    public function checkin(User $user)
+    {
+        Reservation::where([
+            'user_id' => $user->id,
+        ])->update([
+            'check_in_at' => now(),
+        ]);
+    }
 
     public function reservations()
     {
