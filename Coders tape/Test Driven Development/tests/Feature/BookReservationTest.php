@@ -26,6 +26,8 @@ class BookReservationTest extends TestCase
         $this->assertEquals($user->id, $reservations->first()->user_id);
         $this->assertEquals($book->id, $reservations->first()->book_id);
         $this->assertEquals(now(), $reservations->first()->check_out_at);
+        $this->assertNull($reservations->first()->check_in_at);
+
     }
 
     public function test_book_can_be_checked_in()
@@ -40,6 +42,7 @@ class BookReservationTest extends TestCase
         $this->assertEquals($user->id, $reservations->first()->user_id);
         $this->assertEquals($book->id, $reservations->first()->book_id);
         $this->assertEquals(now(), $reservations->first()->check_out_at);
+        $this->assertNull($reservations->first()->check_in_at);
         ////////// the above should be reduced
 
         $book->checkin($user);
