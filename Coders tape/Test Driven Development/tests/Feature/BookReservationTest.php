@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 use App\User;
 use App\Book;
+use App\Reservation;
 
 class BookReservationTest extends TestCase
 {

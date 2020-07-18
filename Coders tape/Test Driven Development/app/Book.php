@@ -24,4 +24,17 @@ class Book extends Model
             'name' => $author,
         ])->id;
     }
+
+    public function checkout(User $user)
+    {
+        $this->reservations()->create([
+            'user_id' => $user->id,
+            'check_out_at' => now(),
+        ]);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }
