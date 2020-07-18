@@ -18,6 +18,7 @@ class CreateReservationsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('book_id');
             $table->timestamp('check_out_at');
+            $table->timestamp('check_in_at')->nullable();
             $table->timestamps();
         });
     }
