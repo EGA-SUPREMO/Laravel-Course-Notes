@@ -31,4 +31,12 @@ class CheckoutBookTest extends TestCase
         $this->assertNull($reservations->first()->check_in_at);
     }
 
+    public function test_book_cannot_be_checkout_by_unlogged_user()
+    {
+        $book = factory(Book::class)->create();
+
+        $this->post('/checkout/'.$book->id)
+            ->assertRedirect('/login');
+        $this->assertCount(0, Reservation::all());
+    }
 }
