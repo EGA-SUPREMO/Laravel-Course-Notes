@@ -36,29 +36,33 @@ class BookReservationTest extends TestCase
         $user = factory(User::class)->create();
 
         $book->checkout($user);
+        $checkoutTime = now();
         $reservations = Reservation::all();
 
         $this->assertCount(1, $reservations);
         $this->assertEquals($user->id, $reservations->first()->user_id);
         $this->assertEquals($book->id, $reservations->first()->book_id);
-        $this->assertEquals(now(), $reservations->first()->check_out_at);
+        $this->assertEquals($checkoutTime, $reservations->first()->check_out_at);
         $this->assertNull($reservations->first()->check_in_at);
         ////////// the above should be reduced
 
+        sleep(1);
         $book->checkin($user);
+        $checkinTime = now();
+
         $reservations = Reservation::all();
 
         $this->assertCount(1, $reservations);
         $this->assertEquals($user->id, $reservations->first()->user_id);
         $this->assertEquals($book->id, $reservations->first()->book_id);
-        $this->assertEquals(now(), $reservations->first()->check_in_at);
+        $this->assertEquals($checkoutTime, $reservations->first()->check_out_at);
+        $this->assertEquals($checkinTime, $reservations->first()->check_in_at);
     }
     public function test_book_can_be_checkout_checked_in_twice()
     {
         $book = factory(Book::class)->create();
         $user = factory(User::class)->create();
 
-        sleep(1);
         $book->checkout($user);
         $reservations = Reservation::all();
         $firstCheckoutDate = now();
@@ -78,7 +82,6 @@ class BookReservationTest extends TestCase
         $this->assertCount(1, $reservations);
         $this->assertEquals($user->id, $reservations->first()->user_id);
         $this->assertEquals($book->id, $reservations->first()->book_id);
-        $this->assertEquals($firstCheckinDate, $reservations->first()->check_in_at);
         ////////// the above should be reduced TOO
 
         sleep(1);
