@@ -16,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/books', 'BookController');
 Route::resource('/authors', 'AuthorController');
 
+
 Route::post('/checkout/{book}', 'BookCheckoutController@store');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
