@@ -39,4 +39,27 @@ class CheckoutBookTest extends TestCase
             ->assertRedirect('/login');
         $this->assertCount(0, Reservation::all());
     }
+
+    public function test_book_can_be_checkin_by_logged_user()
+    {
+        $this->withoutExceptionHandling();
+        $this->actingAs($user = factory(User::class)->create());
+
+        $book = factory(Book::class)->create();
+
+        $this->post('/checkout/'.$book->id);
+        $checkoutTime = now();
+        sleep(1);
+
+        $this->post('/checkin/'.$book->id);
+        $checkinTime = now();
+
+        $reservations = Reservation::all();
+
+        $this->assertCount(1, $reservations);
+        $this->assertEquals($user->id, $reservations->first()->user_id);
+        $this->assertEquals($book->id, $reservations->first()->book_id);
+        $this->assertEquals($checkoutTime, $reservations->first()->check_out_at);
+        $this->assertEquals($checkinTime, $reservations->first()->check_in_at);
+    }
 }
