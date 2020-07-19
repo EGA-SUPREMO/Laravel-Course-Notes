@@ -16,7 +16,7 @@ class CheckoutBookTest extends TestCase
 
     public function test_book_can_be_checkout_by_logged_user()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->create());
 
         $book = factory(Book::class)->create();
 
@@ -30,4 +30,5 @@ class CheckoutBookTest extends TestCase
         $this->assertEquals(now(), $reservations->first()->check_out_at);
         $this->assertNull($reservations->first()->check_in_at);
     }
+
 }
