@@ -18,6 +18,7 @@ Route::resource('/authors', 'AuthorController');
 
 
 Route::post('/checkout/{book}', 'BookCheckoutController@store');
+Route::post('/checkin/{book}', 'BookCheckinController@store');
 
 
 Auth::routes();
