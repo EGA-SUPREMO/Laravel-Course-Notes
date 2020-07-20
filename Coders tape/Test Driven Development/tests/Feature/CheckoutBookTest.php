@@ -77,4 +77,13 @@ class CheckoutBookTest extends TestCase
         $this->assertCount(1, Reservation::all());
         $this->assertNull(Reservation::first()->check_in_at);
     }
+
+    public function test_book_who_doesnt_exist_cannot_be_checked_out()
+    {
+        $this->actingAs($user = factory(User::class)->create())
+            ->post('/checkout/1')
+            ->assertStatus(404);
+
+        $this->assertCount(0, Reservation::all());
+    }
 }
