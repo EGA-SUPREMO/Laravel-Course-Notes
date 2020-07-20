@@ -75,6 +75,6 @@ class CheckoutBookTest extends TestCase
             ->assertRedirect('/login');
 
         $this->assertCount(1, Reservation::all());
-        $this->assertNull($reservations->first()->check_in_at);
+        $this->assertNull(Reservation::first()->check_in_at);
     }
 }
