@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -42,7 +43,6 @@ class CheckoutBookTest extends TestCase
 
     public function test_book_can_be_checkin_by_logged_user()
     {
-        $this->withoutExceptionHandling();
         $this->actingAs($user = factory(User::class)->create());
 
         $book = factory(Book::class)->create();
@@ -61,5 +61,20 @@ class CheckoutBookTest extends TestCase
         $this->assertEquals($book->id, $reservations->first()->book_id);
         $this->assertEquals($checkoutTime, $reservations->first()->check_out_at);
         $this->assertEquals($checkinTime, $reservations->first()->check_in_at);
+    }
+
+    public function test_book_cannot_be_checkin_by_unlogged_user()
+    {
+        $book = factory(Book::class)->create();
+
+        $this->actingAs($user = factory(User::class)->create())
+            ->post('/checkout/'.$book->id);
+
+        Auth::logout();
+        $this->post('/checkin/'.$book->id)
+            ->assertRedirect('/login');
+
+        $this->assertCount(1, Reservation::all());
+        $this->assertNull($reservations->first()->check_in_at);
     }
 }
