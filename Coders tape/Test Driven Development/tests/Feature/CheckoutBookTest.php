@@ -86,4 +86,16 @@ class CheckoutBookTest extends TestCase
 
         $this->assertCount(0, Reservation::all());
     }
+
+    public function test_404_is_thrown_if_book_isnt_checkout_before_checkin()
+    {
+        $this->actingAs($user = factory(User::class)->create());
+
+        $book = factory(Book::class)->create();
+
+        $this->post('/checkin/'.$book->id)
+            ->assertStatus(404);
+
+        $this->assertCount(0, Reservation::all());
+    }
 }
